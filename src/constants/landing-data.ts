@@ -13,42 +13,86 @@ export const NAV_ITEMS: readonly NavItem[] = [
 	{ id: "faq", label: "FAQ" },
 ] as const;
 
+export type PlanBenefitIcon = "sparkles" | "storage" | "flow" | "workspace";
+
 export interface PlanBenefit {
 	title: string;
 	detail: string;
+	spec: string;
+	icon: PlanBenefitIcon;
 }
 
 export const PLAN_BENEFITS: readonly PlanBenefit[] = [
 	{
 		title: "Gemini app",
 		detail: "Double usage limits plus Hydrogen model access",
+		spec: "2x limits",
+		icon: "sparkles",
 	},
 	{
 		title: "400 GB cloud storage",
 		detail: "Shared across Google Photos, Drive, and Gmail",
+		spec: "400 GB",
+		icon: "storage",
 	},
 	{
 		title: "Google Flow & Music",
 		detail: "Expanded AI creative and music studio access",
+		spec: "Flow + Music",
+		icon: "flow",
 	},
 	{
 		title: "Search, Gmail & Notebook",
 		detail: "Nano Banana in Search, Gmail AI, and Audio Overviews",
+		spec: "Workspace AI",
+		icon: "workspace",
 	},
 ] as const;
 
 export interface DemoProfile {
-	name: string;
+	firstName: string;
+	lastName: string;
 	phone: string;
-	passwordChars: number;
+	sampleEmail: string;
+	keyLength: number;
 }
 
 export const DEMO_PROFILES: readonly DemoProfile[] = [
-	{ name: "Ananya Sharma", phone: "+91 8444200182", passwordChars: 12 },
-	{ name: "Rohan Deshmukh", phone: "+91 9821047391", passwordChars: 12 },
-	{ name: "Priya Nair", phone: "+91 7982154036", passwordChars: 12 },
-	{ name: "Arjun Kulkarni", phone: "+91 9145823704", passwordChars: 12 },
-	{ name: "Meera Iyer", phone: "+91 8826401953", passwordChars: 12 },
+	{
+		firstName: "Ananya",
+		lastName: "Sharma",
+		phone: "+91 8444200182",
+		sampleEmail: "ananya.demo@example.com",
+		keyLength: 12,
+	},
+	{
+		firstName: "Rohan",
+		lastName: "Deshmukh",
+		phone: "+91 9821047391",
+		sampleEmail: "rohan.demo@example.com",
+		keyLength: 12,
+	},
+	{
+		firstName: "Priya",
+		lastName: "Nair",
+		phone: "+91 7982154036",
+		sampleEmail: "priya.demo@example.com",
+		keyLength: 12,
+	},
+	{
+		firstName: "Arjun",
+		lastName: "Kulkarni",
+		phone: "+91 9145823704",
+		sampleEmail: "arjun.demo@example.com",
+		keyLength: 12,
+	},
+	{
+		firstName: "Meera",
+		lastName: "Iyer",
+		phone: "+91 8826401953",
+		sampleEmail: "meera.demo@example.com",
+		keyLength: 12,
+	},
 ] as const;
 
 export const BROWSER_OPTIONS = ["Auto-Detect", "Google Chrome", "Microsoft Edge", "Brave"] as const;

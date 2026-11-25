@@ -61,7 +61,7 @@ export function WorkflowSection() {
 		<section
 			id="workflow"
 			aria-labelledby="workflow-heading"
-			className="relative px-4 py-24 sm:px-6 sm:py-32"
+			className="relative scroll-mt-4 px-4 pt-20 pb-24 sm:scroll-mt-6 sm:px-6 sm:pt-24 sm:pb-28"
 		>
 			<div className="mx-auto max-w-4xl">
 				{/* Section Header */}
