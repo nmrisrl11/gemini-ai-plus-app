@@ -36,7 +36,7 @@ export function PreviewSection() {
 					<div className="flex items-center justify-between border-b border-[#1e2430] bg-[#0e1117] px-4 py-2.5">
 						<div className="flex items-center gap-2">
 							<img
-								src="/images/app_icon.png"
+								src="/icons/512.webp"
 								alt="Google AI Plus Portal icon"
 								title="Google AI Plus Portal"
 								width={18}

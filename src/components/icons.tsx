@@ -19,18 +19,3 @@ export function GithubIcon(props: SVGProps<SVGSVGElement>) {
 		</svg>
 	);
 }
-
-export function WindowsIcon(props: SVGProps<SVGSVGElement>) {
-	return (
-		<svg
-			viewBox="0 0 24 24"
-			width="24"
-			height="24"
-			fill="currentColor"
-			aria-hidden="true"
-			{...props}
-		>
-			<path d="M3 5.55 10.35 4.5v7.1H3V5.55Zm8.45-1.2L21 3v8.6h-9.55V4.35ZM3 12.6h7.35v7.05L3 18.6v-6Zm8.45 0H21V21l-9.55-1.35V12.6Z" />
-		</svg>
-	);
-}

@@ -37,7 +37,7 @@ export function HeroSection() {
 			<div className="relative z-10 my-auto flex w-full max-w-4xl flex-col items-center text-center">
 				<div className="size-32 select-none sm:size-40">
 					<img
-						src="/images/app_icon.png"
+						src="/icons/512.webp"
 						alt={`${APP_INFO.name} app icon`}
 						title={APP_INFO.name}
 						draggable={false}

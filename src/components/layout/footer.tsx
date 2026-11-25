@@ -17,7 +17,7 @@ export function Footer() {
 					<div className="flex max-w-md flex-col gap-3.5">
 						<div className="flex items-center gap-2.5">
 							<img
-								src="/images/app_icon.png"
+								src="/icons/512.webp"
 								alt="Google AI Plus Portal icon"
 								title="Google AI Plus Portal"
 								width={32}

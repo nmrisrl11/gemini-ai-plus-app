@@ -24,10 +24,11 @@ Landing page for **[Google AI Plus Portal](https://github.com/nmrisrl11/gemini-a
 │   ├── favicon.ico
 │   ├── llms.txt                 # Machine-readable LLM discovery index
 │   ├── llms-full.txt            # Complete single-file technical & user guide
+│   ├── og-image.png             # 1200x630 Open Graph social preview
 │   ├── robots.txt               # Search & AI crawler directives
 │   ├── site.webmanifest         # Web app & mobile bookmark manifest
 │   ├── sitemap.xml              # Canonical XML sitemap
-│   └── images/                  # App icons and OG preview
+│   └── icons/                   # Multi-size PNG & WebP app icons (16–512px)
 └── src/
     ├── App.tsx                  # Page layout, skip link, and 404 route fallback
     ├── index.css                # Sapphire dark palette, easing curves, and motion utilities
@@ -35,7 +36,7 @@ Landing page for **[Google AI Plus Portal](https://github.com/nmrisrl11/gemini-a
     │   ├── app-info.ts          # Repository, release, and brand metadata
     │   └── landing-data.ts      # Structured copy for sections, demo profiles, and FAQs
     └── components/
-        ├── icons.tsx            # GitHub and Windows SVG marks
+        ├── icons.tsx            # GitHub SVG mark
         ├── download/
         │   └── download-section.tsx
         ├── faq/
@@ -65,8 +66,6 @@ Landing page for **[Google AI Plus Portal](https://github.com/nmrisrl11/gemini-a
         │   ├── preview-stepper.tsx
         │   └── use-preview-simulation.ts
         └── ui/
-            ├── button-variants.ts
-            ├── button.tsx
             ├── gradient-ascii.tsx
             └── select.tsx
 ```

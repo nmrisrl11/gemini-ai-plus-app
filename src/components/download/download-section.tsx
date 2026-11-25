@@ -39,7 +39,7 @@ export function DownloadSection() {
 			<div className="relative z-10 flex w-full max-w-3xl flex-col items-center text-center">
 				<div className="size-28 select-none sm:size-34">
 					<img
-						src="/images/app_icon.png"
+						src="/icons/512.webp"
 						alt="Google AI Plus Portal app icon"
 						title="Google AI Plus Portal"
 						draggable={false}
