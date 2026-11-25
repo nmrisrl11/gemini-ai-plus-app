@@ -2,13 +2,12 @@ import { DownloadSection } from "@/components/download/download-section";
 import { FaqSection } from "@/components/faq/faq-section";
 import { FeaturesSection } from "@/components/features/features-section";
 import { HeroSection } from "@/components/hero/hero-section";
-import { InstallSection } from "@/components/install/install-section";
+import { HowItWorksSection } from "@/components/how-it-works/how-it-works-section";
 import { FloatingNavbar } from "@/components/layout/floating-navbar";
 import { Footer } from "@/components/layout/footer";
 import { NotFoundPage } from "@/components/layout/not-found-page";
 import { PreviewSection } from "@/components/preview/preview-section";
 import { SupportSection } from "@/components/support/support-section";
-import { WorkflowSection } from "@/components/workflow/workflow-section";
 import { useEffect, useState } from "react";
 
 function isNonExistentPath(): boolean {
@@ -51,9 +50,8 @@ export function App() {
 			<main id="main-content" tabIndex={-1} className="outline-none">
 				<HeroSection />
 				<PreviewSection />
-				<WorkflowSection />
+				<HowItWorksSection />
 				<FeaturesSection />
-				<InstallSection />
 				<FaqSection />
 				<SupportSection />
 				<DownloadSection />

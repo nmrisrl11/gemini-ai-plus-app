@@ -6,7 +6,7 @@ Official landing page for **[Gemini AI Plus Portal](https://github.com/nmrisrl11
 
 - **Midnight Sapphire Dark Theme**: Dark-only obsidian palette (`#090c12`) paired with WebGL2 `GradientASCII` (hero) and `Grainient` (closing CTA) backdrops, scroll-driven `Preview the App` cue, and self-hosted `Geist` + `Geist Mono` typography.
 - **Interactive Desktop Preview**: Phishing-safe, read-only UI simulation of the CustomTkinter desktop app—profile randomization, expandable `Customize` view, shadcn `Select` browser picker, 3-step stepper, one-click confirmation pause, canonical link preview, live activity console, `F12` diagnostics preview, and a hairline-divided Google AI Plus spec rail.
-- **Architecture & Workflow**: Sticky 4-step pipeline cards, asymmetric Bento architecture grid (5-tier Chromium discovery cascade, Nuitka native build, `F12` diagnostics, CDP recovery, zero telemetry), tabbed Quick Start (`Portable .exe`, `From Source`, `Headless CLI`), and accessible `<details>` FAQ.
+- **How It Works & Features**: Sticky 4-step pipeline cards, asymmetric Bento architecture grid (5-tier Chromium discovery cascade, Nuitka native build, `F12` diagnostics, CDP recovery, zero telemetry), and accessible `<details>` FAQ.
 - **Tactile Craft**: Custom `--ease-out` (`cubic-bezier(0.23, 1, 0.32, 1)`) motion tokens, press feedback (`scale(0.97)`), pointer-gated hover transforms, and `prefers-reduced-motion` compliance.
 
 ## Tech Stack
@@ -40,8 +40,8 @@ Official landing page for **[Gemini AI Plus Portal](https://github.com/nmrisrl11
         ├── hero/
         │   ├── hero-scroll-cue.tsx
         │   └── hero-section.tsx
-        ├── install/
-        │   └── install-section.tsx
+        ├── how-it-works/
+        │   └── how-it-works-section.tsx
         ├── layout/
         │   ├── floating-navbar.tsx
         │   ├── footer.tsx
@@ -56,14 +56,12 @@ Official landing page for **[Gemini AI Plus Portal](https://github.com/nmrisrl11
         │   └── use-preview-simulation.ts
         ├── support/
         │   └── support-section.tsx
-        ├── ui/
-        │   ├── button-variants.ts
-        │   ├── button.tsx
-        │   ├── gradient-ascii.tsx
-        │   ├── grainient.tsx
-        │   └── select.tsx
-        └── workflow/
-            └── workflow-section.tsx
+        └── ui/
+            ├── button-variants.ts
+            ├── button.tsx
+            ├── gradient-ascii.tsx
+            ├── grainient.tsx
+            └── select.tsx
 ```
 
 ## Development

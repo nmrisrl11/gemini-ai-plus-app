@@ -7,9 +7,8 @@ export interface NavItem {
 
 export const NAV_ITEMS: readonly NavItem[] = [
 	{ id: "preview", label: "Preview" },
-	{ id: "workflow", label: "Workflow" },
-	{ id: "features", label: "Architecture" },
-	{ id: "install", label: "Install" },
+	{ id: "how-it-works", label: "How it works" },
+	{ id: "features", label: "Features" },
 	{ id: "faq", label: "FAQ" },
 ] as const;
 
@@ -99,7 +98,7 @@ export const BROWSER_OPTIONS = ["Auto-Detect", "Google Chrome", "Microsoft Edge"
 
 export type BrowserOption = (typeof BROWSER_OPTIONS)[number];
 
-export interface WorkflowCardData {
+export interface HowItWorksCardData {
 	id: string;
 	step: string;
 	title: string;
@@ -116,7 +115,7 @@ export interface WorkflowCardData {
 	};
 }
 
-export const WORKFLOW_CARDS: readonly WorkflowCardData[] = [
+export const HOW_IT_WORKS_CARDS: readonly HowItWorksCardData[] = [
 	{
 		id: "profile",
 		step: "01",
@@ -185,46 +184,6 @@ export const CASCADE_TIERS = [
 	{ tier: "03", name: "Brave", channel: "Brave.exe" },
 	{ tier: "04", name: "Opera / Vivaldi", channel: "AppData" },
 	{ tier: "05", name: "Playwright", channel: "Cache" },
-] as const;
-
-export interface ReleaseSpec {
-	label: string;
-	value: string;
-	isAccent?: boolean;
-}
-
-export const RELEASE_SPECS: readonly ReleaseSpec[] = [
-	{ label: "Platform", value: APP_INFO.platform },
-	{ label: "Binary Size", value: `${APP_INFO.binarySize} (Nuitka + Zstd)` },
-	{ label: "Telemetry", value: "Zero network relays", isAccent: true },
-	{ label: "License", value: "MIT Open Source" },
-] as const;
-
-export interface InstallStep {
-	num: string;
-	title: string;
-	instruction: string;
-}
-
-export const PORTABLE_STEPS: readonly InstallStep[] = [
-	{
-		num: "01",
-		title: "Download the portable executable",
-		instruction:
-			"Grab Gemini AI Plus Portal v1.0.0.exe from the latest GitHub Release. No installer, Python runtime, or external browser download is needed.",
-	},
-	{
-		num: "02",
-		title: "Launch and enter your Gmail",
-		instruction:
-			"Double-click the executable, enter your personal @gmail.com address, and keep Auto-Detect enabled to attach to your installed Edge, Chrome, or Brave.",
-	},
-	{
-		num: "03",
-		title: "Verify OTP and open your offer link",
-		instruction:
-			"Enter the 6-digit code sent to your inbox when prompted. Copy the resolved Google One offer link or check the local results/ folder anytime.",
-	},
 ] as const;
 
 export interface FaqItem {

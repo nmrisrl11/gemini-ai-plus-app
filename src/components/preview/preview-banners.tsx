@@ -1,4 +1,5 @@
 import { SAMPLE_OUTPUT_URL, type SimStage } from "@/components/preview/use-preview-simulation";
+import { APP_INFO } from "@/constants/app-info";
 import { Check, Copy, ExternalLink } from "lucide-react";
 
 interface PreviewBannersProps {
@@ -84,7 +85,9 @@ export function PreviewBanners({
 						)}
 					</button>
 					<a
-						href="#install"
+						href={APP_INFO.latestReleaseUrl}
+						target="_blank"
+						rel="noreferrer noopener"
 						className="tactile-press inline-flex h-8 items-center gap-1.5 rounded-[6px] border border-emerald-500/30 bg-[#091711] px-3 text-xs font-medium text-emerald-200 hover:bg-emerald-500/15"
 					>
 						<span>Get Desktop App</span>

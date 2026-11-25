@@ -40,25 +40,25 @@ export function Footer() {
 							<span className="text-xs font-semibold text-foreground">Portal</span>
 							<div className="flex flex-col gap-2.5 text-xs">
 								<a href="#preview" className="transition-colors duration-150 hover:text-foreground">
-									Interactive Preview
+									Preview
 								</a>
 								<a
-									href="#workflow"
+									href="#how-it-works"
 									className="transition-colors duration-150 hover:text-foreground"
 								>
-									How It Works
+									How it works
 								</a>
 								<a
 									href="#features"
 									className="transition-colors duration-150 hover:text-foreground"
 								>
-									Architecture
-								</a>
-								<a href="#install" className="transition-colors duration-150 hover:text-foreground">
-									Install &amp; CLI
+									Features
 								</a>
 								<a href="#faq" className="transition-colors duration-150 hover:text-foreground">
-									Questions &amp; Answers
+									FAQ
+								</a>
+								<a href="#support" className="transition-colors duration-150 hover:text-foreground">
+									Support Development
 								</a>
 							</div>
 						</div>

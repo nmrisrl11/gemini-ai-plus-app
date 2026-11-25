@@ -70,17 +70,6 @@ export function FloatingNavbar() {
 		window.history.replaceState(null, "", `#${id}`);
 	};
 
-	const handleBrandClick = (e: MouseEvent<HTMLAnchorElement>) => {
-		if (e.button !== 0 || e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
-		e.preventDefault();
-		setActiveId("");
-		setMobileOpen(false);
-		window.scrollTo({ top: 0, behavior: "smooth" });
-		if (window.location.hash) {
-			window.history.replaceState(null, "", "/");
-		}
-	};
-
 	return (
 		<>
 			{mobileOpen ? (
@@ -100,27 +89,7 @@ export function FloatingNavbar() {
 						: "pointer-events-none -translate-y-4 scale-[0.96] opacity-0",
 				)}
 			>
-				<div className="surface-chassis flex max-w-[96vw] items-center gap-1 rounded-full border border-white/12 bg-background/88 p-1 pl-2 backdrop-blur-2xl sm:gap-1.5 sm:p-1.5 sm:pl-2.5">
-					{/* Brand Emblem */}
-					<a
-						href="/"
-						onClick={handleBrandClick}
-						aria-label={`${APP_INFO.name} — Back to top`}
-						className="tactile-press flex items-center gap-2 rounded-full py-0.5 pr-2 pl-1 text-xs font-semibold tracking-tight text-foreground hover:text-primary"
-					>
-						<img
-							src="/images/app_icon.png"
-							alt=""
-							aria-hidden="true"
-							width={22}
-							height={22}
-							className="size-5.5 shrink-0 object-contain"
-						/>
-						<span className="hidden md:inline">{APP_INFO.shortName}</span>
-					</a>
-
-					<span className="h-3.5 w-px bg-border/70" aria-hidden="true" />
-
+				<div className="flex max-w-[96vw] items-center gap-1 rounded-full border border-white/12 bg-background/90 p-1 pl-2 shadow-[0_12px_32px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:gap-1.5 sm:p-1.5 sm:pl-2.5">
 					{/* Mobile section selector (zero-shift grid stacker) */}
 					<button
 						type="button"
@@ -143,7 +112,7 @@ export function FloatingNavbar() {
 										key={item.id || "default"}
 										aria-hidden={!isCurrent}
 										className={cn(
-											"col-start-1 row-start-1 transition-[transform,opacity] duration-200 ease-out",
+											"col-start-1 row-start-1 whitespace-nowrap transition-[transform,opacity] duration-200 ease-out",
 											isCurrent
 												? "translate-y-0 opacity-100"
 												: "pointer-events-none -translate-y-1.5 opacity-0",
@@ -174,7 +143,7 @@ export function FloatingNavbar() {
 									onClick={(e) => handleNavClick(e, item.id)}
 									aria-current={isActive ? "location" : undefined}
 									className={cn(
-										"tactile-press rounded-full px-3 py-1.5 text-xs font-medium",
+										"tactile-press rounded-full px-3 py-1.5 text-xs font-medium whitespace-nowrap",
 										isActive
 											? "bg-primary/14 text-primary"
 											: "text-muted-foreground hover:bg-white/6 hover:text-foreground",
@@ -215,7 +184,7 @@ export function FloatingNavbar() {
 				{mobileOpen ? (
 					<div
 						id="mobile-nav-menu"
-						className="mobile-nav-popover surface-chassis mt-2 w-52 overflow-hidden rounded-2xl border border-white/12 bg-card/96 p-1.5 backdrop-blur-2xl sm:hidden"
+						className="mobile-nav-popover mt-2 w-52 overflow-hidden rounded-2xl border border-white/12 bg-card/96 p-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.5)] backdrop-blur-2xl sm:hidden"
 					>
 						<nav aria-label="Mobile sections" className="flex flex-col gap-0.5">
 							{NAV_ITEMS.map((item) => {

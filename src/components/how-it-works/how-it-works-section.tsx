@@ -1,8 +1,8 @@
-import { WORKFLOW_CARDS } from "@/constants/landing-data";
+import { HOW_IT_WORKS_CARDS } from "@/constants/landing-data";
 import { ArrowUpRight, Layers } from "lucide-react";
 import { useEffect, useRef } from "react";
 
-export function WorkflowSection() {
+export function HowItWorksSection() {
 	const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 	const rafRef = useRef<number | null>(null);
 
@@ -59,18 +59,18 @@ export function WorkflowSection() {
 
 	return (
 		<section
-			id="workflow"
-			aria-labelledby="workflow-heading"
+			id="how-it-works"
+			aria-labelledby="how-it-works-heading"
 			className="relative scroll-mt-4 px-4 pt-20 pb-24 sm:scroll-mt-6 sm:px-6 sm:pt-24 sm:pb-28"
 		>
 			<div className="mx-auto max-w-4xl">
 				{/* Section Header */}
 				<div className="mx-auto max-w-2xl text-center">
 					<h2
-						id="workflow-heading"
+						id="how-it-works-heading"
 						className="text-3xl font-extrabold tracking-[-0.03em] text-foreground sm:text-5xl"
 					>
-						Four steps, under a minute.
+						How it works.
 					</h2>
 					<p className="mx-auto mt-3.5 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
 						Manual student forms take ten minutes of fragile tab-switching. The portal handles
@@ -80,7 +80,7 @@ export function WorkflowSection() {
 
 				{/* Sticky Stacking Pipeline Cards */}
 				<div className="relative mt-14 sm:mt-20">
-					{WORKFLOW_CARDS.map((card, idx) => (
+					{HOW_IT_WORKS_CARDS.map((card, idx) => (
 						<div
 							key={card.id}
 							ref={(el) => {
