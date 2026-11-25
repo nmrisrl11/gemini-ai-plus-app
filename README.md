@@ -20,6 +20,7 @@ Landing page for **[Google AI Plus Portal](https://github.com/nmrisrl11/gemini-a
 ## Project Structure
 
 ```text
+├── vercel.json                  # Security/cache headers, /download redirect, and SPA rewrites
 ├── public/
 │   ├── favicon.ico
 │   ├── llms.txt                 # Machine-readable LLM discovery index

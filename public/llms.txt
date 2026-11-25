@@ -9,7 +9,7 @@ Google AI Plus Portal runs entirely on your Windows 10 or Windows 11 PC with zer
 - [Web Portal](https://gemini-ai-plus-portal.vercel.app/): Interactive landing page featuring a read-only desktop app preview, 3D scroll-driven workflow, interactive feature spotlight, and topic-filtered FAQ.
 - [Full Documentation](https://gemini-ai-plus-portal.vercel.app/llms-full.txt): Single-file technical and user guide covering desktop architecture, workflow stages, FAQ, and privacy disclosures.
 - [Desktop App Repository](https://github.com/nmrisrl11/gemini-ai-plus-portal): Open-source Windows desktop utility source code and build workflows.
-- [Latest Windows Release](https://github.com/nmrisrl11/gemini-ai-plus-portal/releases/latest): Pre-built standalone Windows download with published checksums and VirusTotal scan reports.
+- [Latest Windows Release](https://gemini-ai-plus-portal.vercel.app/download): Pre-built standalone Windows download (redirects to the latest release build; mirrored on GitHub Releases with published checksums and VirusTotal scan reports).
 - [Web Portal Repository](https://github.com/nmrisrl11/gemini-ai-plus-app): Open-source React 19 + TypeScript + Vite 8 landing page source code.
 
 ## Web Portal Sections

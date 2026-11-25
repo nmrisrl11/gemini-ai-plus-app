@@ -9,7 +9,9 @@ export const APP_INFO = {
 		"An independent, open-source Windows utility that automates 12-month Google AI Plus onboarding and extracts your direct Google One offer link locally.",
 	githubUrl: "https://github.com/nmrisrl11/gemini-ai-plus-portal",
 	githubReleasesUrl: "https://github.com/nmrisrl11/gemini-ai-plus-portal/releases",
-	latestReleaseUrl: "https://github.com/nmrisrl11/gemini-ai-plus-portal/releases/latest",
+	latestReleaseUrl: "/download",
+	directDownloadUrl:
+		"https://download-ai-plus-portal.nmrisrl.dev/latest/Gemini-AI-Plus-Portal-latest.exe",
 	githubIssuesUrl: "https://github.com/nmrisrl11/gemini-ai-plus-portal/issues",
 	githubDiscussionsUrl: "https://github.com/nmrisrl11/gemini-ai-plus-portal/discussions",
 	licenseUrl: "https://github.com/nmrisrl11/gemini-ai-plus-portal/blob/main/LICENSE",
