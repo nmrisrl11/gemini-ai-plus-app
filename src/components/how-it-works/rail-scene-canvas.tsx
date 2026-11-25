@@ -86,11 +86,11 @@ export default function RailSceneCanvas({ progressRef, reducedMotion }: RailScen
 		const dotTex = makeTexture(createDotSpriteCanvas());
 		const routeMat = new THREE.PointsMaterial({
 			color: 0x38bdf8,
-			size: 0.075,
+			size: 0.065,
 			map: dotTex,
 			alphaTest: 0.4,
 			transparent: true,
-			opacity: 0.9,
+			opacity: 0.56,
 		});
 		scene.add(new THREE.Points(routeGeo, routeMat));
 
@@ -130,7 +130,7 @@ export default function RailSceneCanvas({ progressRef, reducedMotion }: RailScen
 				map: glowTex,
 				transparent: true,
 				depthWrite: false,
-				opacity: 0.72,
+				opacity: 0.52,
 			});
 			const glowMesh = new THREE.Mesh(glowGeo, glowMat);
 			glowMesh.position.set(0, -0.08, -0.05);

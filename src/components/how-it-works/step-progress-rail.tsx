@@ -32,9 +32,9 @@ export const StepProgressRail = memo(function StepProgressRail({
 								aria-label={`Jump to step ${step.step}: ${step.title}`}
 								onClick={() => onSelectStep(idx)}
 								className={cn(
-									"tactile-press cursor-pointer rounded-[6px] px-2.5 py-1 font-mono text-[11px] font-semibold",
+									"tactile-press cursor-pointer rounded-[6px] px-2.5 py-1 font-mono text-[11px] font-medium",
 									isActive
-										? "bg-primary/18 text-primary"
+										? "bg-white/12 text-foreground"
 										: "text-muted-foreground hover:bg-white/6 hover:text-foreground",
 								)}
 							>

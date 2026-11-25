@@ -113,8 +113,7 @@ export function HowItWorksSection() {
 					How it works.
 				</h2>
 				<p className="mx-auto mt-3.5 max-w-xl text-base leading-relaxed text-balance text-muted-foreground sm:text-lg">
-					Follow the four-step local pipeline from profile setup to your official Google One offer
-					link.
+					Four simple steps on your PC, from quick setup to your official Google One offer link.
 				</p>
 			</div>
 
@@ -131,7 +130,7 @@ export function HowItWorksSection() {
 					{/* Seamless atmospheric glow + top/bottom edge blends into the page */}
 					<div
 						aria-hidden="true"
-						className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_50%_45%,rgba(37,99,235,0.1)_0%,rgba(9,12,18,0)_66%)]"
+						className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_50%_45%,rgba(37,99,235,0.06)_0%,rgba(9,12,18,0)_66%)]"
 					/>
 					<div
 						aria-hidden="true"
@@ -159,7 +158,7 @@ export function HowItWorksSection() {
 					) : null}
 
 					{/* Active Step Editorial Caption */}
-					<StepCaptionOverlay step={currentStep} />
+					<StepCaptionOverlay step={currentStep} stepIndex={activeStep} totalSteps={STEP_COUNT} />
 				</div>
 			</div>
 		</section>

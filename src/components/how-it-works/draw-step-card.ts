@@ -1,26 +1,23 @@
 /**
- * Pure Canvas2D renderers for the 4 dark-mode desktop UI cards along the 3D rail,
- * plus reusable radial glow and dotted-rail sprite generators.
+ * Pure Canvas2D renderers for the 4 calm, monochrome dark-mode UI cards along the 3D rail,
+ * plus reusable radial depth-glow and dotted-rail sprite generators.
  */
 
 const FONT_SANS = '"Geist Variable", Geist, -apple-system, BlinkMacSystemFont, sans-serif';
 const FONT_MONO = '"Geist Mono Variable", "Geist Mono", ui-monospace, monospace';
 
 const COLORS = {
-	cardBg: "#131720",
-	subBg: "#0c0f15",
-	border: "#252f42",
-	divider: "#1e2430",
+	cardBg: "#0e1117",
+	surface: "#131720",
+	subBg: "#0a0d13",
+	border: "#222938",
+	borderActive: "#323d52",
+	divider: "#1b202b",
 	ink: "#f1f5f9",
 	muted: "#94a3b8",
 	dim: "#64748b",
 	cobalt: "#2563eb",
-	sky: "#38bdf8",
-	skySoft: "rgba(56, 189, 248, 0.14)",
-	emerald: "#34d399",
-	emeraldSoft: "rgba(16, 185, 129, 0.16)",
-	amber: "#fbbf24",
-	amberSoft: "rgba(245, 158, 11, 0.16)",
+	accent: "#38bdf8",
 } as const;
 
 function drawRoundedRect(
@@ -56,20 +53,11 @@ function drawText(
 	ctx.fillText(text, x, y);
 }
 
-function drawPill(
-	ctx: CanvasRenderingContext2D,
-	x: number,
-	y: number,
-	w: number,
-	h: number,
-	bg: string,
-	label: string,
-	color: string,
-) {
-	drawRoundedRect(ctx, x, y, w, h, 6);
-	ctx.fillStyle = bg;
-	ctx.fill();
-	drawText(ctx, label, x + w / 2, y + h * 0.67, `600 11px ${FONT_MONO}`, color, "center");
+function drawCardHeader(ctx: CanvasRenderingContext2D, leftLabel: string, rightLabel: string) {
+	drawText(ctx, leftLabel, 22, 32, `500 10.5px ${FONT_MONO}`, COLORS.muted);
+	drawText(ctx, rightLabel, 298, 32, `500 10.5px ${FONT_MONO}`, COLORS.dim, "right");
+	ctx.fillStyle = COLORS.divider;
+	ctx.fillRect(22, 44, 276, 1);
 }
 
 export function createCanvas(width: number, height: number): HTMLCanvasElement {
@@ -84,8 +72,8 @@ export function createRadialGlowCanvas(): HTMLCanvasElement {
 	const ctx = canvas.getContext("2d");
 	if (!ctx) return canvas;
 	const gradient = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
-	gradient.addColorStop(0, "rgba(37, 99, 235, 0.34)");
-	gradient.addColorStop(0.55, "rgba(56, 189, 248, 0.08)");
+	gradient.addColorStop(0, "rgba(37, 99, 235, 0.16)");
+	gradient.addColorStop(0.55, "rgba(56, 189, 248, 0.04)");
 	gradient.addColorStop(1, "rgba(9, 12, 18, 0)");
 	ctx.fillStyle = gradient;
 	ctx.fillRect(0, 0, 128, 128);
@@ -114,172 +102,172 @@ export function drawStepCard(
 	ctx.scale(width / 320, height / 224);
 
 	// Outer card shell (concentric 12px radius matching desktop UI)
-	drawRoundedRect(ctx, 4, 4, 312, 216, 14);
+	drawRoundedRect(ctx, 4, 4, 312, 216, 12);
 	ctx.fillStyle = COLORS.cardBg;
 	ctx.fill();
-	ctx.lineWidth = 1.5;
+	ctx.lineWidth = 1.25;
 	ctx.strokeStyle = COLORS.border;
 	ctx.stroke();
 
 	ctx.save();
-	drawRoundedRect(ctx, 4, 4, 312, 216, 14);
+	drawRoundedRect(ctx, 4, 4, 312, 216, 12);
 	ctx.clip();
 
 	// Subtle top specular hairline
-	ctx.fillStyle = "rgba(255, 255, 255, 0.06)";
-	ctx.fillRect(4, 4, 312, 1.5);
+	ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
+	ctx.fillRect(4, 4, 312, 1);
 
 	const kind = stepIndex % 4;
 
 	if (kind === 0) {
-		// 01 / Profile Setup
-		drawPill(ctx, 20, 20, 88, 22, COLORS.skySoft, "01 · PROFILE", COLORS.sky);
-		drawPill(ctx, 224, 20, 76, 22, COLORS.subBg, "100% Local", COLORS.muted);
+		// 01 · Setup
+		drawCardHeader(ctx, "01 · Setup", "Local only");
 
-		drawText(ctx, "Sample Target Email", 20, 68, `600 12px ${FONT_SANS}`, COLORS.ink);
-		drawRoundedRect(ctx, 20, 78, 280, 32, 6);
+		drawText(ctx, "Sample email", 22, 68, `500 11px ${FONT_SANS}`, COLORS.muted);
+		drawRoundedRect(ctx, 22, 76, 276, 32, 6);
 		ctx.fillStyle = COLORS.subBg;
 		ctx.fill();
-		ctx.strokeStyle = COLORS.border;
+		ctx.strokeStyle = COLORS.divider;
 		ctx.lineWidth = 1;
 		ctx.stroke();
-		drawText(ctx, "ananya.demo@example.com", 32, 98, `500 12px ${FONT_MONO}`, COLORS.ink);
+		drawText(ctx, "ananya.demo@example.com", 32, 96, `500 11.5px ${FONT_MONO}`, COLORS.ink);
 
-		drawRoundedRect(ctx, 20, 122, 280, 50, 6);
-		ctx.fillStyle = "#0f131b";
+		drawRoundedRect(ctx, 22, 118, 276, 46, 6);
+		ctx.fillStyle = COLORS.surface;
 		ctx.fill();
 		ctx.strokeStyle = COLORS.divider;
 		ctx.stroke();
-		drawText(ctx, "GENERATED PROFILE", 32, 140, `600 9.5px ${FONT_MONO}`, COLORS.dim);
-		drawText(ctx, "Ananya Sharma · +91 8444200182", 32, 159, `500 12px ${FONT_SANS}`, COLORS.ink);
+		drawText(ctx, "Profile details", 32, 135, `500 10px ${FONT_SANS}`, COLORS.dim);
+		drawText(ctx, "Ananya Sharma · +91 8444200182", 32, 153, `500 11.5px ${FONT_SANS}`, COLORS.ink);
 
-		drawPill(ctx, 20, 184, 98, 24, "#1a202d", "Randomize", COLORS.ink);
-		drawPill(ctx, 184, 184, 116, 24, COLORS.cobalt, "Ready to Run", "#ffffff");
+		// Quiet secondary + single brand primary button
+		drawRoundedRect(ctx, 22, 176, 92, 26, 6);
+		ctx.fillStyle = COLORS.surface;
+		ctx.fill();
+		ctx.strokeStyle = COLORS.border;
+		ctx.stroke();
+		drawText(ctx, "Shuffle", 68, 193, `500 11px ${FONT_SANS}`, COLORS.muted, "center");
+
+		drawRoundedRect(ctx, 204, 176, 94, 26, 6);
+		ctx.fillStyle = COLORS.cobalt;
+		ctx.fill();
+		drawText(ctx, "Start", 251, 193, `600 11px ${FONT_SANS}`, "#ffffff", "center");
 	} else if (kind === 1) {
-		// 02 / Local Browser Cascade
-		drawPill(ctx, 20, 20, 92, 22, COLORS.skySoft, "02 · ENGINE", COLORS.sky);
-		drawPill(ctx, 212, 20, 88, 22, COLORS.emeraldSoft, "0 MB Bloat", COLORS.emerald);
+		// 02 · Browser
+		drawCardHeader(ctx, "02 · Browser", "Auto-detected");
 
-		drawText(ctx, "Chromium Discovery Cascade", 20, 68, `600 14px ${FONT_SANS}`, COLORS.ink);
-		drawText(
-			ctx,
-			"Attaches directly to your installed browser",
-			20,
-			86,
-			`500 11px ${FONT_SANS}`,
-			COLORS.muted,
-		);
+		drawText(ctx, "Uses your browser", 22, 70, `600 13.5px ${FONT_SANS}`, COLORS.ink);
+		drawText(ctx, "No extra browser download needed", 22, 87, `500 11px ${FONT_SANS}`, COLORS.dim);
 
 		const browsers = [
-			{ name: "Google Chrome", channel: "chrome", active: false },
-			{ name: "Microsoft Edge", channel: "msedge", active: true },
-			{ name: "Brave Browser", channel: "Brave.exe", active: false },
+			{ name: "Google Chrome", active: false },
+			{ name: "Microsoft Edge", active: true },
+			{ name: "Brave", active: false },
 		];
 
 		browsers.forEach((b, i) => {
-			const y = 102 + i * 36;
-			drawRoundedRect(ctx, 20, y, 280, 28, 6);
-			ctx.fillStyle = b.active ? "rgba(37, 99, 235, 0.18)" : COLORS.subBg;
+			const y = 102 + i * 35;
+			drawRoundedRect(ctx, 22, y, 276, 28, 6);
+			ctx.fillStyle = b.active ? COLORS.surface : COLORS.subBg;
 			ctx.fill();
-			ctx.strokeStyle = b.active ? COLORS.sky : COLORS.divider;
+			ctx.strokeStyle = b.active ? COLORS.borderActive : COLORS.divider;
 			ctx.lineWidth = 1;
 			ctx.stroke();
 
 			ctx.beginPath();
-			ctx.arc(34, y + 14, 3.5, 0, Math.PI * 2);
-			ctx.fillStyle = b.active ? COLORS.emerald : COLORS.dim;
+			ctx.arc(36, y + 14, 3, 0, Math.PI * 2);
+			ctx.fillStyle = b.active ? COLORS.accent : COLORS.dim;
 			ctx.fill();
 
-			drawText(ctx, b.name, 46, y + 18, `600 12px ${FONT_SANS}`, COLORS.ink);
 			drawText(
 				ctx,
-				b.active ? "Attached" : b.channel,
-				288,
+				b.name,
+				48,
 				y + 18,
-				`500 10.5px ${FONT_MONO}`,
-				b.active ? COLORS.sky : COLORS.dim,
-				"right",
+				`500 11.5px ${FONT_SANS}`,
+				b.active ? COLORS.ink : COLORS.muted,
 			);
+			if (b.active) {
+				drawText(ctx, "Selected", 286, y + 18, `500 10.5px ${FONT_MONO}`, COLORS.ink, "right");
+			}
 		});
 	} else if (kind === 2) {
-		// 03 / Human-in-the-loop Confirmation & Safety Guard
-		drawPill(ctx, 20, 20, 108, 22, COLORS.amberSoft, "03 · SAFE PAUSE", COLORS.amber);
-		drawPill(ctx, 180, 20, 120, 22, COLORS.subBg, "Turnstile Safe", COLORS.muted);
+		// 03 · Verify
+		drawCardHeader(ctx, "03 · Verify", "Waiting on you");
 
-		drawText(ctx, "Human-in-the-Loop Check", 20, 68, `600 14px ${FONT_SANS}`, COLORS.ink);
+		drawText(ctx, "Enter your inbox code", 22, 70, `600 13.5px ${FONT_SANS}`, COLORS.ink);
 		drawText(
 			ctx,
-			"Pauses cleanly for your inbox confirmation",
-			20,
-			86,
+			"Takes a moment to confirm it's really you",
+			22,
+			87,
 			`500 11px ${FONT_SANS}`,
-			COLORS.muted,
+			COLORS.dim,
 		);
 
-		// 6-digit sample confirmation cells
+		// 6 monochrome sample code cells (single focal border on active cell)
 		const digits = ["4", "8", "2", "9", "1", "0"];
 		digits.forEach((d, i) => {
-			const x = 20 + i * 48;
-			drawRoundedRect(ctx, x, 104, 40, 44, 7);
-			ctx.fillStyle = COLORS.subBg;
+			const x = 22 + i * 47;
+			drawRoundedRect(ctx, x, 104, 40, 44, 6);
+			ctx.fillStyle = i === 3 ? COLORS.surface : COLORS.subBg;
 			ctx.fill();
-			ctx.strokeStyle = i < 4 ? COLORS.sky : COLORS.border;
-			ctx.lineWidth = 1.25;
+			ctx.strokeStyle = i === 3 ? COLORS.accent : COLORS.divider;
+			ctx.lineWidth = 1;
 			ctx.stroke();
-			drawText(ctx, d, x + 20, 132, `600 18px ${FONT_MONO}`, COLORS.ink, "center");
+			drawText(ctx, d, x + 20, 132, `600 16px ${FONT_MONO}`, COLORS.ink, "center");
 		});
 
-		drawRoundedRect(ctx, 20, 164, 280, 40, 6);
-		ctx.fillStyle = "#1b160d";
+		drawRoundedRect(ctx, 22, 164, 276, 36, 6);
+		ctx.fillStyle = COLORS.subBg;
 		ctx.fill();
-		ctx.strokeStyle = "rgba(245, 158, 11, 0.35)";
+		ctx.strokeStyle = COLORS.divider;
 		ctx.lineWidth = 1;
 		ctx.stroke();
 		drawText(
 			ctx,
-			"Challenge & CAPTCHA protection active",
-			32,
-			188,
-			`500 11.5px ${FONT_SANS}`,
-			COLORS.amber,
-		);
-	} else {
-		// 04 / Canonical Offer Link & Local Archive
-		drawPill(ctx, 20, 20, 104, 22, COLORS.emeraldSoft, "04 · EXTRACTED", COLORS.emerald);
-		drawPill(ctx, 212, 20, 88, 22, COLORS.skySoft, "$0.00 Today", COLORS.sky);
-
-		drawText(ctx, "Canonical Offer Link Ready", 20, 68, `600 14px ${FONT_SANS}`, COLORS.ink);
-		drawText(
-			ctx,
-			"Redirects resolved and backed up locally",
-			20,
-			86,
+			"Pauses automatically for security checks",
+			34,
+			186,
 			`500 11px ${FONT_SANS}`,
 			COLORS.muted,
 		);
+	} else {
+		// 04 · Ready
+		drawCardHeader(ctx, "04 · Ready", "$0.00 today");
 
-		drawRoundedRect(ctx, 20, 102, 280, 38, 6);
-		ctx.fillStyle = "#091711";
+		drawText(ctx, "Your offer link is ready", 22, 70, `600 13.5px ${FONT_SANS}`, COLORS.ink);
+		drawText(
+			ctx,
+			"Open directly in Google One anytime",
+			22,
+			87,
+			`500 11px ${FONT_SANS}`,
+			COLORS.dim,
+		);
+
+		drawRoundedRect(ctx, 22, 104, 276, 38, 6);
+		ctx.fillStyle = COLORS.surface;
 		ctx.fill();
-		ctx.strokeStyle = "rgba(16, 185, 129, 0.35)";
+		ctx.strokeStyle = COLORS.borderActive;
 		ctx.lineWidth = 1;
 		ctx.stroke();
-		drawText(ctx, "one.google.com/offer/AIPLUS-12M", 32, 125, `500 11.5px ${FONT_MONO}`, "#a7f3d0");
+		drawText(
+			ctx,
+			"one.google.com/offer/AIPLUS-12M",
+			34,
+			127,
+			`500 11.5px ${FONT_MONO}`,
+			COLORS.ink,
+		);
 
-		drawRoundedRect(ctx, 20, 152, 280, 52, 6);
+		drawRoundedRect(ctx, 22, 154, 276, 46, 6);
 		ctx.fillStyle = COLORS.subBg;
 		ctx.fill();
 		ctx.strokeStyle = COLORS.divider;
 		ctx.stroke();
-		drawText(ctx, "LOCAL ARCHIVE", 32, 170, `600 9.5px ${FONT_MONO}`, COLORS.dim);
-		drawText(
-			ctx,
-			"results/session_2026.txt · Saved",
-			32,
-			190,
-			`500 11.5px ${FONT_MONO}`,
-			COLORS.emerald,
-		);
+		drawText(ctx, "Backup saved", 34, 173, `500 10.5px ${FONT_SANS}`, COLORS.dim);
+		drawText(ctx, "results/session_2026.txt", 34, 190, `500 11px ${FONT_MONO}`, COLORS.muted);
 	}
 
 	ctx.restore();

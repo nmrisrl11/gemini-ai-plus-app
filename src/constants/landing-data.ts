@@ -110,41 +110,69 @@ export const HOW_IT_WORKS_STEPS: readonly HowItWorksStep[] = [
 	{
 		id: "profile",
 		step: "01",
-		kicker: "01 / Profile Setup",
-		title: "Format once, ready to run.",
-		description: "Generate compliant student profile details locally in a single click.",
+		kicker: "01 · Setup",
+		title: "Fill in your details once.",
+		description: "Generate ready-to-use profile details in one click, or type your own.",
 	},
 	{
 		id: "browser",
 		step: "02",
-		kicker: "02 / Local Browser",
-		title: "Uses the browser you have.",
-		description: "Playwright attaches to Chrome, Edge, or Brave—zero 400 MB browser downloads.",
+		kicker: "02 · Browser",
+		title: "Uses your own browser.",
+		description: "Opens directly in Chrome, Edge, or Brave—nothing extra to download.",
 	},
 	{
 		id: "confirm",
 		step: "03",
-		kicker: "03 / Safe Confirmation",
+		kicker: "03 · Verify",
 		title: "Pauses when you're needed.",
-		description:
-			"Confirm your inbox code locally while Turnstile and CAPTCHA guards protect your session.",
+		description: "Enter your inbox code or finish a security check before it continues.",
 	},
 	{
 		id: "redeem",
 		step: "04",
-		kicker: "04 / Link & Archive",
-		title: "Clean link, saved locally.",
-		description: "Resolves your official Google One offer URL and archives a backup in results/.",
+		kicker: "04 · Ready",
+		title: "Your link, saved for you.",
+		description: "Captures your official Google One offer link and keeps a local copy.",
 	},
 ] as const;
 
-export const CASCADE_TIERS = [
-	{ tier: "01", name: "Chrome", channel: "chrome" },
-	{ tier: "02", name: "Edge", channel: "msedge" },
-	{ tier: "03", name: "Brave", channel: "Brave.exe" },
-	{ tier: "04", name: "Opera / Vivaldi", channel: "AppData" },
-	{ tier: "05", name: "Playwright", channel: "Cache" },
+export type FeatureSpotlightId = "browser" | "privacy" | "portable" | "recovery";
+
+export interface FeatureSpotlight {
+	id: FeatureSpotlightId;
+	title: string;
+	description: string;
+}
+
+export const FEATURE_SPOTLIGHTS: readonly FeatureSpotlight[] = [
+	{
+		id: "browser",
+		title: "Works with your browser",
+		description:
+			"Uses Chrome, Edge, or Brave already on your PC, so you skip giant extra downloads.",
+	},
+	{
+		id: "privacy",
+		title: "Private by default",
+		description:
+			"Everything stays on your computer—no sign-ups, no tracking, and nothing sent to any server.",
+	},
+	{
+		id: "portable",
+		title: "Just download and open",
+		description:
+			"One lightweight Windows app you can double-click right away, publicly verified and open source.",
+	},
+	{
+		id: "recovery",
+		title: "Pauses safely when needed",
+		description:
+			"If a security check pops up, it waits for you and lets you pick up right where you left off.",
+	},
 ] as const;
+
+export const SUPPORTED_BROWSERS = ["Chrome", "Edge", "Brave", "Opera", "Vivaldi"] as const;
 
 export interface FaqItem {
 	q: string;

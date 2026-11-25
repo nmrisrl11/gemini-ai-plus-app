@@ -296,6 +296,32 @@
 	}
 }
 
+/* Step caption entrance for scroll-linked How it works overlay */
+.caption-step-enter {
+	opacity: 1;
+	transform: translateY(0) scale(1);
+	transition:
+		opacity 200ms var(--ease-out),
+		transform 220ms var(--ease-out);
+
+	@starting-style {
+		opacity: 0;
+		transform: translateY(6px) scale(0.985);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.caption-step-enter {
+		transform: none;
+		transition: opacity 180ms ease;
+
+		@starting-style {
+			opacity: 0;
+			transform: none;
+		}
+	}
+}
+
 /* Subtle blur-masked state crossfade for live profile randomization */
 .profile-crossfade {
 	transition:
