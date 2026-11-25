@@ -143,7 +143,7 @@ export const FeatureStage = memo(function FeatureStage({ activeId }: FeatureStag
 					<div className="flex flex-col gap-2.5">
 						<div className="rounded-[8px] border border-white/12 bg-[#131720] px-4 py-3.5">
 							<div className="font-mono text-xs font-semibold text-foreground">
-								Gemini AI Plus Portal.exe
+								Gemini AI Plus Portal (Windows 10/11)
 							</div>
 							<p className="mt-1 text-xs text-muted-foreground">
 								No installer wizard—just double-click to open.

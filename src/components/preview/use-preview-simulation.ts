@@ -10,7 +10,7 @@ export interface LogEntry {
 	text: string;
 }
 
-export const SAMPLE_OUTPUT_URL = "https://one.google.com/offer/SAMPLE-PREVIEW-LINK";
+export const SAMPLE_OUTPUT_URL = "https://example.com/offer/sample-preview-link";
 
 const READY_LINES: readonly LogEntry[] = [
 	{ id: 1, text: "Ready to preview the Gemini AI Plus Portal desktop workflow." },

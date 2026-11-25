@@ -122,16 +122,16 @@ export const HOW_IT_WORKS_STEPS: readonly HowItWorksStep[] = [
 	{
 		id: "confirm",
 		step: "03",
-		kicker: "03 · Verify",
+		kicker: "03 · Confirm",
 		title: "Pauses when you're needed.",
-		description: "Enter your inbox code or finish a security check before it continues.",
+		description: "Complete the email confirmation step or security check before it continues.",
 	},
 	{
 		id: "redeem",
 		step: "04",
 		kicker: "04 · Ready",
 		title: "Your link, saved for you.",
-		description: "Captures your official Google One offer link and keeps a local copy.",
+		description: "Captures your direct Google One offer link and keeps a local copy.",
 	},
 ] as const;
 
@@ -204,8 +204,8 @@ export const FAQ_ITEMS: readonly FaqItem[] = [
 	{
 		id: "payment-method",
 		category: "billing",
-		q: "Why does Google ask for a payment method?",
-		a: "Google One requires a card or PayPal on file for all promotional offers to verify your account. You pay $0.00 today for the 12-month Google AI Plus period, and you can turn off auto-renewal right away in Google One settings while keeping the full year.",
+		q: "Why does Google One show a billing step?",
+		a: "Google One requires a billing profile on file during promotional checkout on Google One. The 12-month promotional period is $0.00 today, and auto-renewal can be turned off anytime in your Google One settings.",
 	},
 	{
 		id: "security-check",

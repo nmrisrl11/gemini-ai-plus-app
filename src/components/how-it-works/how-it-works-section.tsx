@@ -113,7 +113,7 @@ export function HowItWorksSection() {
 					How it works.
 				</h2>
 				<p className="mx-auto mt-3.5 max-w-xl text-base leading-relaxed text-balance text-muted-foreground sm:text-lg">
-					Four simple steps on your PC, from quick setup to your official Google One offer link.
+					Four simple steps on your PC, from quick setup to your direct Google One offer link.
 				</p>
 			</div>
 

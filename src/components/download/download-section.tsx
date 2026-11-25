@@ -58,8 +58,8 @@ export function DownloadSection() {
 				</h2>
 
 				<p className="mt-4 max-w-lg text-base leading-relaxed text-balance text-white/82 sm:text-lg">
-					Free, open source, and runs locally on Windows. Download the app and claim your 12-month
-					Google AI Plus offer in minutes.
+					Open source and runs locally on Windows. Download the desktop app to set up your 12-month
+					Google AI Plus promotional offer.
 				</p>
 
 				<div className="mt-9">

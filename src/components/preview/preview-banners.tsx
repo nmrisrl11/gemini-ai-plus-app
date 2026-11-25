@@ -27,7 +27,7 @@ export function PreviewBanners({
 						Simulated human-in-the-loop pause
 					</span>
 					<p className="text-xs text-amber-100/75">
-						In the desktop app, you confirm the one-time inbox code locally before automation
+						In the desktop app, you complete the email confirmation step locally before automation
 						resumes.
 					</p>
 				</div>

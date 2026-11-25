@@ -6,7 +6,7 @@ export const APP_INFO = {
 	binarySize: "~43 MB",
 	platform: "Windows 10 / 11 (64-bit)",
 	description:
-		"An independent, open-source Windows utility that automates 12-month Google AI Plus onboarding and extracts your official Google One offer link locally.",
+		"An independent, open-source Windows utility that automates 12-month Google AI Plus onboarding and extracts your direct Google One offer link locally.",
 	githubUrl: "https://github.com/nmrisrl11/gemini-ai-plus-portal",
 	githubReleasesUrl: "https://github.com/nmrisrl11/gemini-ai-plus-portal/releases",
 	latestReleaseUrl: "https://github.com/nmrisrl11/gemini-ai-plus-portal/releases/latest",

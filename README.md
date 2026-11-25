@@ -1,6 +1,6 @@
 # Gemini AI Plus Portal — Landing Page
 
-Official landing page for **[Gemini AI Plus Portal](https://github.com/nmrisrl11/gemini-ai-plus-portal)**, an independent, open-source Windows desktop utility that automates 12-month Google AI Plus onboarding and extracts canonical Google One offer links 100% locally.
+Landing page for **[Gemini AI Plus Portal](https://github.com/nmrisrl11/gemini-ai-plus-portal)**, an independent, open-source Windows desktop utility that automates 12-month Google AI Plus onboarding and extracts canonical Google One offer links 100% locally.
 
 ## Highlights
 
@@ -23,7 +23,7 @@ Official landing page for **[Gemini AI Plus Portal](https://github.com/nmrisrl11
 ├── public/
 │   ├── favicon.ico
 │   ├── site.webmanifest
-│   └── images/                  # Official app icons and OG preview
+│   └── images/                  # App icons and OG preview
 └── src/
     ├── App.tsx                  # Page layout, skip link, and 404 route fallback
     ├── index.css                # Sapphire dark palette, easing curves, and motion utilities

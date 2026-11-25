@@ -192,13 +192,13 @@ export function drawStepCard(
 			}
 		});
 	} else if (kind === 2) {
-		// 03 · Verify
-		drawCardHeader(ctx, "03 · Verify", "Waiting on you");
+		// 03 · Confirm
+		drawCardHeader(ctx, "03 · Confirm", "Waiting on you");
 
-		drawText(ctx, "Enter your inbox code", 22, 70, `600 13.5px ${FONT_SANS}`, COLORS.ink);
+		drawText(ctx, "Complete the email check", 22, 70, `600 13.5px ${FONT_SANS}`, COLORS.ink);
 		drawText(
 			ctx,
-			"Takes a moment to confirm it's really you",
+			"Finish the confirmation step in your browser",
 			22,
 			87,
 			`500 11px ${FONT_SANS}`,
@@ -254,7 +254,7 @@ export function drawStepCard(
 		ctx.stroke();
 		drawText(
 			ctx,
-			"one.google.com/offer/AIPLUS-12M",
+			"example.com/offer/sample-preview",
 			34,
 			127,
 			`500 11.5px ${FONT_MONO}`,

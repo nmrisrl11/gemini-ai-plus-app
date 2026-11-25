@@ -5,7 +5,8 @@ const CURRENT_YEAR = new Date().getFullYear();
 
 export function Footer() {
 	const scrollToTop = () => {
-		window.scrollTo({ top: 0, behavior: "smooth" });
+		const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
 	};
 
 	return (
@@ -35,7 +36,7 @@ export function Footer() {
 					</div>
 
 					{/* Typography-Driven Columns */}
-					<div className="grid grid-cols-2 gap-10 sm:gap-16 lg:gap-20">
+					<nav aria-label="Footer" className="grid grid-cols-2 gap-10 sm:gap-16 lg:gap-20">
 						<div className="flex flex-col gap-4">
 							<span className="text-xs font-semibold text-foreground">Portal</span>
 							<div className="flex flex-col gap-2.5 text-xs">
@@ -69,7 +70,7 @@ export function Footer() {
 									rel="noreferrer noopener"
 									className="transition-colors duration-150 hover:text-foreground"
 								>
-									Download Latest (.exe)
+									Download for Windows
 								</a>
 								<a
 									href={APP_INFO.githubUrl}
@@ -85,7 +86,7 @@ export function Footer() {
 									rel="noreferrer noopener"
 									className="transition-colors duration-150 hover:text-foreground"
 								>
-									Releases &amp; Checksums
+									All Releases
 								</a>
 								<a
 									href={APP_INFO.licenseUrl}
@@ -97,7 +98,7 @@ export function Footer() {
 								</a>
 							</div>
 						</div>
-					</div>
+					</nav>
 				</div>
 
 				{/* Hairline Legal & Back-to-top Bar */}

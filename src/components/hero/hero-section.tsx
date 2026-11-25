@@ -53,7 +53,7 @@ export function HeroSection() {
 
 				<p className="mt-5 max-w-lg text-base leading-relaxed text-white/84 sm:text-lg">
 					An open-source Windows utility that automates 12-month Google AI Plus onboarding and
-					extracts your official Google One offer link locally.
+					extracts your direct Google One offer link locally.
 				</p>
 
 				<div className="mt-9 flex flex-col items-center">

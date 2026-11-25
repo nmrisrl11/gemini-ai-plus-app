@@ -180,11 +180,11 @@ export function FloatingNavbar() {
 					</a>
 				</div>
 
-				{/* Origin-aware Mobile Dropdown */}
+				{/* Origin-aware Mobile Dropdown (concentric 12px outer -> 4px pad -> 8px item) */}
 				{mobileOpen ? (
 					<div
 						id="mobile-nav-menu"
-						className="mobile-nav-popover mt-2 w-52 overflow-hidden rounded-2xl border border-white/12 bg-card/96 p-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.5)] backdrop-blur-2xl sm:hidden"
+						className="mobile-nav-popover mt-1.5 w-48 overflow-hidden rounded-[12px] border border-white/10 bg-[#0e1117]/95 p-1 shadow-[0_14px_32px_-8px_rgba(0,0,0,0.65)] backdrop-blur-2xl sm:hidden"
 					>
 						<nav aria-label="Mobile sections" className="flex flex-col gap-0.5">
 							{NAV_ITEMS.map((item) => {
@@ -196,10 +196,10 @@ export function FloatingNavbar() {
 										onClick={(e) => handleNavClick(e, item.id)}
 										aria-current={isActive ? "location" : undefined}
 										className={cn(
-											"tactile-press flex items-center justify-between rounded-xl px-3 py-2 text-xs font-medium",
+											"tactile-press flex items-center justify-between rounded-[8px] px-2.5 py-1.5 text-xs font-medium",
 											isActive
-												? "bg-primary/14 text-primary"
-												: "text-muted-foreground hover:bg-white/6 hover:text-foreground",
+												? "bg-white/8 text-foreground"
+												: "text-muted-foreground hover:bg-white/5 hover:text-foreground",
 										)}
 									>
 										<span>{item.label}</span>
