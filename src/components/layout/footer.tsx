@@ -57,9 +57,6 @@ export function Footer() {
 								<a href="#faq" className="transition-colors duration-150 hover:text-foreground">
 									FAQ
 								</a>
-								<a href="#support" className="transition-colors duration-150 hover:text-foreground">
-									Support Development
-								</a>
 							</div>
 						</div>
 
@@ -97,9 +94,6 @@ export function Footer() {
 									className="transition-colors duration-150 hover:text-foreground"
 								>
 									MIT License
-								</a>
-								<a href="#support" className="transition-colors duration-150 hover:text-foreground">
-									Support Development
 								</a>
 							</div>
 						</div>

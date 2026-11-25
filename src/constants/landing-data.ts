@@ -1,5 +1,3 @@
-import { APP_INFO } from "@/constants/app-info";
-
 export interface NavItem {
 	id: string;
 	label: string;
@@ -174,66 +172,57 @@ export const FEATURE_SPOTLIGHTS: readonly FeatureSpotlight[] = [
 
 export const SUPPORTED_BROWSERS = ["Chrome", "Edge", "Brave", "Opera", "Vivaldi"] as const;
 
+export type FaqCategory = "all" | "privacy" | "setup" | "billing";
+
+export const FAQ_CATEGORIES: readonly { id: FaqCategory; label: string }[] = [
+	{ id: "all", label: "All" },
+	{ id: "privacy", label: "Privacy" },
+	{ id: "setup", label: "Setup" },
+	{ id: "billing", label: "Billing" },
+] as const;
+
 export interface FaqItem {
+	id: string;
+	category: Exclude<FaqCategory, "all">;
 	q: string;
 	a: string;
 }
 
 export const FAQ_ITEMS: readonly FaqItem[] = [
 	{
-		q: "Does the portal send my email, password, or links to any server?",
-		a: "Never. Everything runs 100% locally on your Windows PC with zero analytics, cloud relays, or telemetry. Generated details and extracted Google One links are written strictly to the local results/ folder next to the app.",
+		id: "local-privacy",
+		category: "privacy",
+		q: "Does the app send my details to any server?",
+		a: "Never. Everything runs directly on your Windows PC with no accounts, tracking, or remote servers. Your details and offer links stay in a local folder right next to the app.",
 	},
 	{
-		q: "Do I need Python or Playwright browsers installed first?",
-		a: "No. The portable .exe bundles all Python dependencies and connects directly to your existing Google Chrome, Microsoft Edge (pre-installed on Windows 10/11), Brave, Opera, or Vivaldi—avoiding a 400 MB browser download.",
+		id: "no-extra-installs",
+		category: "setup",
+		q: "Do I need to install anything else first?",
+		a: "No. Just download the single Windows file and double-click to open. It works with Chrome, Edge, or Brave already on your computer, so there are no extra browsers or runtimes to install.",
 	},
 	{
-		q: "What happens if Cloudflare Turnstile or a CAPTCHA appears?",
-		a: "The automation engine monitors for Turnstile, reCAPTCHA, and gateway interstitials. If a challenge triggers, it pauses or switches to a visible window so you can solve it safely—preventing retries or account lockouts.",
+		id: "payment-method",
+		category: "billing",
+		q: "Why does Google ask for a payment method?",
+		a: "Google One requires a card or PayPal on file for all promotional offers to verify your account. You pay $0.00 today for the 12-month Google AI Plus period, and you can turn off auto-renewal right away in Google One settings while keeping the full year.",
 	},
 	{
-		q: "Why does Google One ask for a payment method when activating?",
-		a: "Google One requires a linked payment method (card or PayPal) on all promotional trials to verify identity. You are billed $0.00 today for the 12-month Google AI Plus period, and you can cancel auto-renewal immediately in Google One settings while keeping the full year.",
+		id: "security-check",
+		category: "setup",
+		q: "What if a security check or CAPTCHA pops up?",
+		a: "The app pauses automatically and lets you complete the check yourself in the browser window before continuing, keeping your account safe from lockouts.",
 	},
 	{
-		q: "What if a session gets interrupted halfway through?",
-		a: "You do not have to start over. The repository includes tools/account_recovery/run_account_recovery.bat, which attaches to your live browser session via Chrome DevTools Protocol (port 9222) and extracts the redemption link directly.",
+		id: "interrupted-run",
+		category: "setup",
+		q: "What if something gets interrupted halfway?",
+		a: "You don't have to start over. If your connection drops or a window closes mid-way, the built-in recovery helper can reconnect to your browser and finish grabbing your link.",
 	},
 	{
-		q: "How is the portable .exe compiled and verified?",
-		a: "GitHub Actions builds every release cleanly from open-source code using Nuitka (Python-to-C native compilation) with Zstandard compression, publishes SHA256SUMS.txt, and attaches an automated VirusTotal API v3 scan report to each release.",
-	},
-] as const;
-
-export interface SupportChannel {
-	id: string;
-	title: string;
-	methods: string;
-	qrImage: string;
-	qrAlt: string;
-	instruction: string;
-	actionUrl?: string;
-	actionLabel?: string;
-}
-
-export const SUPPORT_CHANNELS: readonly SupportChannel[] = [
-	{
-		id: "bmc",
-		title: "Buy Me a Coffee",
-		methods: "Cards · Apple Pay · Google Pay",
-		qrImage: "/images/qrcode-bmc.png",
-		qrAlt: "Buy Me a Coffee QR code",
-		instruction: "Scan with camera or open link below",
-		actionUrl: APP_INFO.bmcUrl,
-		actionLabel: "Open buymeacoffee.com",
-	},
-	{
-		id: "gcash",
-		title: "GCash / QR Ph",
-		methods: "GCash · Maya · InstaPay Banking",
-		qrImage: "/images/qrcode-gcash.jpg",
-		qrAlt: "GCash / QR Ph QR code",
-		instruction: "Scan with any PH banking app",
+		id: "verified-download",
+		category: "privacy",
+		q: "How do I know the download is safe?",
+		a: "Every release is open source and built automatically from public code on GitHub, complete with an independent VirusTotal scan and file checksum so you can verify it yourself.",
 	},
 ] as const;

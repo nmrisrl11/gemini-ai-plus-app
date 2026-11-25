@@ -52,9 +52,6 @@ export function PreviewSection() {
 							<span className="hidden rounded-[5px] border border-primary/25 bg-primary/10 px-2 py-0.5 text-[11px] text-primary md:inline-flex">
 								Interactive UI Preview
 							</span>
-							<a href="#support" className="transition-colors duration-150 hover:text-foreground">
-								Support
-							</a>
 							<a
 								href={APP_INFO.githubUrl}
 								target="_blank"

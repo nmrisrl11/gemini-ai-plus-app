@@ -7,7 +7,6 @@ import { FloatingNavbar } from "@/components/layout/floating-navbar";
 import { Footer } from "@/components/layout/footer";
 import { NotFoundPage } from "@/components/layout/not-found-page";
 import { PreviewSection } from "@/components/preview/preview-section";
-import { SupportSection } from "@/components/support/support-section";
 import { useEffect, useState } from "react";
 
 function isNonExistentPath(): boolean {
@@ -53,7 +52,6 @@ export function App() {
 				<HowItWorksSection />
 				<FeaturesSection />
 				<FaqSection />
-				<SupportSection />
 				<DownloadSection />
 			</main>
 
