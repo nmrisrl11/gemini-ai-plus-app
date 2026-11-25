@@ -7,6 +7,9 @@
 		"dev": "vite",
 		"build": "oxlint src --deny-warnings && tsc -b && vite build",
 		"lint": "oxlint src",
+		"lint:fix": "oxlint src --fix",
+		"lint:tailwind": "tailwind-lint",
+		"lint:tailwind:fix": "tailwind-lint --fix",
 		"preview": "vite preview",
 		"format": "oxfmt . --write --ignore-path=.oxfmtignore",
 		"format:check": "oxfmt . --check --ignore-path=.oxfmtignore"
@@ -31,6 +34,7 @@
 		"@vitejs/plugin-react": "^6.3.0",
 		"oxfmt": "^0.80.0",
 		"oxlint": "^1.95.0",
+		"tailwind-lint": "^0.17.2",
 		"typescript": "^7.0.2",
 		"vite": "^8.3.8"
 	}
