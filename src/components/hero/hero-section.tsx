@@ -1,9 +1,7 @@
 import { HeroScrollCue } from "@/components/hero/hero-scroll-cue";
 import GradientASCII from "@/components/ui/gradient-ascii";
-import { APP_INFO } from "@/constants/app-info";
+import { APP_INFO, GRADIENT_ASCII_COLORS } from "@/constants/app-info";
 import { ArrowRight } from "lucide-react";
-
-const ASCII_COLORS = ["#1e3fd8", "#f6f8ff", "#a5d8ff", "#38bdf8"];
 
 export function HeroSection() {
 	return (
@@ -14,7 +12,7 @@ export function HeroSection() {
 			{/* GradientASCII WebGL2 Backdrop */}
 			<div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
 				<GradientASCII
-					colors={ASCII_COLORS}
+					colors={GRADIENT_ASCII_COLORS}
 					shape="horizon"
 					characters=" .·•●"
 					mouseInteraction={false}

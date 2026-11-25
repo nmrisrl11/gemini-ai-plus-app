@@ -1,95 +1,75 @@
-import { WindowsIcon } from "@/components/icons";
-import { Grainient } from "@/components/ui/grainient";
-import { APP_INFO, SAPPHIRE_GRAINIENT_COLORS } from "@/constants/app-info";
-import { ArrowRight } from "lucide-react";
+import GradientASCII from "@/components/ui/gradient-ascii";
+import { APP_INFO, GRADIENT_ASCII_COLORS } from "@/constants/app-info";
 
 export function DownloadSection() {
 	return (
 		<section
 			id="download"
 			aria-labelledby="download-heading"
-			className="relative -mb-px flex min-h-dvh w-full items-center justify-center overflow-hidden bg-background px-4 pt-28 pb-36 sm:px-6 sm:pt-36 sm:pb-44"
+			className="relative -mb-px flex min-h-dvh w-full items-center justify-center overflow-hidden bg-background px-4 py-24 sm:px-6 sm:py-32"
 		>
-			{/* Atmospheric Sapphire Grainient */}
-			<div className="pointer-events-auto absolute inset-0 z-0">
-				<Grainient
-					colors={SAPPHIRE_GRAINIENT_COLORS}
-					angle={192}
-					bands={1}
-					speed={0.95}
-					flow={0.82}
-					scale={1}
-					softness={1}
-					silk={0.35}
-					grainAmount={0.075}
-					grainSize={1.2}
-					grainAnimated={true}
-					interactive={true}
-					stir={0.95}
-					clickSwirl={false}
+			{/* Rising GradientASCII WebGL2 Backdrop — mirrors the hero to close the page loop */}
+			<div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+				<GradientASCII
+					colors={GRADIENT_ASCII_COLORS}
+					shape="rise"
+					characters=" .·•●"
+					mouseInteraction={false}
+					clickEffect="none"
+					fontFamily='"Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace'
 					intro={false}
+					lightMode={false}
 				/>
 			</div>
 
-			{/* Top & bottom blends into the obsidian background */}
+			{/* Subtle center readability veil + seamless top & bottom blends */}
+			<div
+				className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_48%,rgba(9,12,18,0.6)_0%,rgba(9,12,18,0.22)_58%,transparent_100%)]"
+				aria-hidden="true"
+			/>
 			<div
 				className="pointer-events-none absolute inset-x-0 -top-1 z-0 h-40 bg-linear-to-b from-background to-transparent sm:h-48"
 				aria-hidden="true"
 			/>
 			<div
-				className="pointer-events-none absolute inset-x-0 -bottom-1 z-0 h-48 bg-linear-to-t from-background to-transparent sm:h-60"
+				className="pointer-events-none absolute inset-x-0 -bottom-1 z-0 h-40 bg-linear-to-t from-background to-transparent sm:h-48"
 				aria-hidden="true"
 			/>
 
-			<div className="relative z-10 flex w-full max-w-2xl flex-col items-center text-center">
-				<div className="size-22 select-none sm:size-26">
+			<div className="relative z-10 flex w-full max-w-3xl flex-col items-center text-center">
+				<div className="size-28 select-none sm:size-34">
 					<img
 						src="/images/app_icon.png"
 						alt=""
 						aria-hidden="true"
 						draggable={false}
-						width={104}
-						height={104}
+						width={136}
+						height={136}
 						loading="lazy"
-						className="size-full -rotate-7 object-contain drop-shadow-[0_16px_30px_rgba(0,0,0,0.6)] select-none"
+						className="size-full -rotate-8 object-contain drop-shadow-[0_18px_32px_rgba(0,0,0,0.6)] select-none"
 					/>
 				</div>
 
 				<h2
 					id="download-heading"
-					className="mt-7 text-3xl font-extrabold tracking-[-0.03em] text-white sm:text-5xl md:text-6xl md:leading-[1.12]"
+					className="mt-7 text-4xl font-extrabold tracking-[-0.04em] text-white sm:text-5xl sm:whitespace-nowrap md:text-6xl md:leading-[1.08]"
 				>
-					Ready in under a minute.
+					Ready when you are.
 				</h2>
 
-				<p className="mt-4 max-w-lg text-sm leading-relaxed text-white/82 sm:text-base">
-					Free, MIT open-source, and 100% local on Windows. Download the portable executable or
-					build directly from source.
+				<p className="mt-4 max-w-lg text-base leading-relaxed text-balance text-white/82 sm:text-lg">
+					Free, open source, and runs locally on Windows. Download the app and claim your 12-month
+					Google AI Plus offer in minutes.
 				</p>
 
-				<div className="mt-8 flex flex-col items-center gap-4">
+				<div className="mt-9">
 					<a
 						href={APP_INFO.latestReleaseUrl}
 						target="_blank"
 						rel="noreferrer noopener"
-						className="tactile-pill inline-flex cursor-pointer items-center justify-center gap-2.5 rounded-full border border-white/65 bg-linear-to-b from-white via-[#f8fafc] to-[#e2e8f0] px-9 py-3.5 text-[15px] font-semibold text-slate-950 shadow-[0_14px_34px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,1)] hover:shadow-[0_18px_42px_rgba(0,0,0,0.55)] sm:px-10 sm:py-4 sm:text-[16px]"
+						className="tactile-pill inline-flex cursor-pointer items-center justify-center rounded-full border border-white/60 bg-linear-to-b from-white via-[#fafafa] to-[#e8e8e8] px-10 py-4 text-[16px] font-semibold text-neutral-900 shadow-[0_12px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,1)] hover:from-white hover:to-[#f2f2f2] sm:px-11 sm:py-4.5 sm:text-[17px]"
 					>
-						<WindowsIcon className="size-4 text-slate-900" />
-						<span>Download for Windows</span>
-					</a>
-
-					<a
-						href={APP_INFO.githubUrl}
-						target="_blank"
-						rel="noreferrer noopener"
-						className="hover-arrow-shift inline-flex items-center gap-1.5 text-xs font-medium text-white/65 transition-colors duration-150 hover:text-white sm:text-[13px]"
-					>
-						<span>Inspect source on GitHub</span>
-						<ArrowRight
-							data-arrow
-							className="size-3.5 transition-transform duration-180 ease-out"
-							aria-hidden="true"
-						/>
+						Download for Windows
 					</a>
 				</div>
 			</div>

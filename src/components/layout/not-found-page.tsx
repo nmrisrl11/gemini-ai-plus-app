@@ -1,5 +1,5 @@
-import { Grainient } from "@/components/ui/grainient";
-import { APP_INFO, SAPPHIRE_GRAINIENT_COLORS } from "@/constants/app-info";
+import GradientASCII from "@/components/ui/gradient-ascii";
+import { APP_INFO, GRADIENT_ASCII_COLORS } from "@/constants/app-info";
 import { ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 
@@ -17,27 +17,24 @@ export function NotFoundPage({ onNavigateHome }: NotFoundPageProps) {
 	}, []);
 
 	return (
-		<section className="relative flex min-h-dvh w-full items-center justify-center overflow-hidden px-4 py-20 sm:px-6">
-			<div className="pointer-events-auto absolute inset-0 z-0">
-				<Grainient
-					colors={SAPPHIRE_GRAINIENT_COLORS}
-					angle={12}
-					bands={1}
-					speed={0.95}
-					flow={0.82}
-					scale={1}
-					softness={1}
-					silk={0.35}
-					grainAmount={0.075}
-					grainSize={1.2}
-					grainAnimated={true}
-					interactive={true}
-					stir={0.95}
-					clickSwirl={false}
+		<section className="relative flex min-h-dvh w-full items-center justify-center overflow-hidden bg-background px-4 py-20 sm:px-6">
+			<div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+				<GradientASCII
+					colors={GRADIENT_ASCII_COLORS}
+					shape="rise"
+					characters=" .·•●"
+					mouseInteraction={false}
+					clickEffect="none"
+					fontFamily='"Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace'
 					intro={true}
+					lightMode={false}
 				/>
 			</div>
 
+			<div
+				className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_48%,rgba(9,12,18,0.6)_0%,rgba(9,12,18,0.22)_58%,transparent_100%)]"
+				aria-hidden="true"
+			/>
 			<div
 				className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-36 bg-linear-to-t from-background to-transparent"
 				aria-hidden="true"
@@ -55,7 +52,7 @@ export function NotFoundPage({ onNavigateHome }: NotFoundPageProps) {
 					<button
 						type="button"
 						onClick={onNavigateHome}
-						className="tactile-pill cursor-pointer rounded-full border border-white/65 bg-linear-to-b from-white via-[#f8fafc] to-[#e2e8f0] px-9 py-3.5 text-[15px] font-semibold text-slate-950 shadow-[0_14px_34px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,1)] sm:px-10 sm:py-4 sm:text-[16px]"
+						className="tactile-pill cursor-pointer rounded-full border border-white/60 bg-linear-to-b from-white via-[#fafafa] to-[#e8e8e8] px-10 py-4 text-[16px] font-semibold text-neutral-900 shadow-[0_12px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,1)] hover:from-white hover:to-[#f2f2f2] sm:px-11 sm:py-4.5 sm:text-[17px]"
 					>
 						Return to Homepage
 					</button>

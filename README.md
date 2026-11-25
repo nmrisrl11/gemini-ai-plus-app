@@ -4,7 +4,7 @@ Official landing page for **[Gemini AI Plus Portal](https://github.com/nmrisrl11
 
 ## Highlights
 
-- **Midnight Sapphire Dark Theme**: Dark-only obsidian palette (`#090c12`) paired with WebGL2 `GradientASCII` (hero) and `Grainient` (closing CTA) backdrops, scroll-driven `Preview the App` cue, and self-hosted `Geist` + `Geist Mono` typography.
+- **Midnight Sapphire Dark Theme**: Dark-only obsidian palette (`#090c12`) paired with WebGL2 `GradientASCII` (`horizon` hero and `rise` closing CTA) backdrops, scroll-driven `Preview the App` cue, and self-hosted `Geist` + `Geist Mono` typography.
 - **Interactive Desktop Preview**: Phishing-safe, read-only UI simulation of the CustomTkinter desktop app—profile randomization, expandable `Customize` view, shadcn `Select` browser picker, 3-step stepper, one-click confirmation pause, canonical link preview, live activity console, `F12` diagnostics preview, and a hairline-divided Google AI Plus spec rail.
 - **How It Works & Features**: Lazy-loaded Three.js 3D camera-on-a-rail full-bleed scroll pipeline with 4 monochrome Canvas2D UI cards, an interactive split-spotlight Features showcase (browser detection, local-only privacy, portable Windows download, safe pause & resume), and a topic-filtered exclusive `<details>` FAQ.
 - **Tactile Craft**: Custom `--ease-out` (`cubic-bezier(0.23, 1, 0.32, 1)`) motion tokens, press feedback (`scale(0.97)`), pointer-gated hover transforms, and `prefers-reduced-motion` compliance.
@@ -12,7 +12,7 @@ Official landing page for **[Gemini AI Plus Portal](https://github.com/nmrisrl11
 ## Tech Stack
 
 - **Framework**: React 19 + TypeScript + Vite 8
-- **3D & Shaders**: Three.js (lazy-loaded rail scene) + WebGL2 (`GradientASCII`, `Grainient`)
+- **3D & Shaders**: Three.js (lazy-loaded rail scene) + WebGL2 (`GradientASCII`)
 - **Styling**: Tailwind CSS v4 (`@tailwindcss/vite`) + shadcn/ui (`radix-nova`)
 - **Fonts**: `@fontsource-variable/geist` & `@fontsource-variable/geist-mono`
 - **Linting & Formatting**: Oxlint, Oxfmt, and `tailwind-lint`
@@ -64,7 +64,6 @@ Official landing page for **[Gemini AI Plus Portal](https://github.com/nmrisrl11
             ├── button-variants.ts
             ├── button.tsx
             ├── gradient-ascii.tsx
-            ├── grainient.tsx
             └── select.tsx
 ```
 

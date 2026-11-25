@@ -20,5 +20,5 @@ export const APP_INFO = {
 	devGithub: "https://github.com/nmrisrl11",
 } as const;
 
-/** Signature Midnight-to-Electric-Sapphire WebGL Grainient ramp */
-export const SAPPHIRE_GRAINIENT_COLORS = ["#070b14", "#0b1a36", "#075985", "#0284c7", "#7dd3fc"];
+/** Shared Sapphire WebGL2 GradientASCII color ramp */
+export const GRADIENT_ASCII_COLORS = ["#1e3fd8", "#f6f8ff", "#a5d8ff", "#38bdf8"];
