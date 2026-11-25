@@ -7,7 +7,7 @@ export function SupportSection() {
 		<section
 			id="support"
 			aria-labelledby="support-heading"
-			className="relative scroll-mt-4 px-4 pt-20 pb-24 sm:scroll-mt-6 sm:px-6 sm:pt-24 sm:pb-28"
+			className="relative flex min-h-dvh scroll-mt-4 flex-col justify-center px-4 pt-20 pb-24 sm:scroll-mt-6 sm:px-6 sm:pt-24 sm:pb-28"
 		>
 			<div className="mx-auto max-w-6xl">
 				<div className="surface-card mx-auto max-w-2xl rounded-3xl border border-white/10 bg-card/75 p-6 backdrop-blur-sm sm:p-10">

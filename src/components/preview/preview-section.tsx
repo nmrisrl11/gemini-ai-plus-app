@@ -13,20 +13,20 @@ export function PreviewSection() {
 		<section
 			id="preview"
 			aria-labelledby="preview-heading"
-			className="relative scroll-mt-4 px-4 pt-20 pb-24 sm:scroll-mt-6 sm:px-6 sm:pt-24 sm:pb-28"
+			className="relative flex min-h-dvh scroll-mt-4 flex-col justify-center px-4 pt-20 pb-24 sm:scroll-mt-6 sm:px-6 sm:pt-24 sm:pb-28"
 		>
 			<div className="mx-auto flex w-full max-w-5xl flex-col items-center">
 				{/* Section Header */}
-				<div className="mx-auto max-w-2xl text-center">
+				<div className="mx-auto max-w-xl text-center">
 					<h2
 						id="preview-heading"
 						className="text-3xl font-extrabold tracking-[-0.03em] text-foreground sm:text-5xl"
 					>
 						See how it runs.
 					</h2>
-					<p className="mx-auto mt-3.5 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-						Explore an interactive UI preview of the Windows desktop app using sample data—no
-						account details are entered or transmitted here.
+					<p className="mx-auto mt-3.5 max-w-xl text-base leading-relaxed text-balance text-muted-foreground sm:text-lg">
+						Explore an interactive preview of the Windows desktop app using sample data—nothing is
+						entered or sent here.
 					</p>
 				</div>
 

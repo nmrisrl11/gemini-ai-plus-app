@@ -7,7 +7,7 @@ export function FaqSection() {
 		<section
 			id="faq"
 			aria-labelledby="faq-heading"
-			className="relative scroll-mt-4 px-4 pt-20 pb-24 sm:scroll-mt-6 sm:px-6 sm:pt-24 sm:pb-28"
+			className="relative flex min-h-dvh scroll-mt-4 flex-col justify-center px-4 pt-20 pb-24 sm:scroll-mt-6 sm:px-6 sm:pt-24 sm:pb-28"
 		>
 			<div className="mx-auto max-w-6xl">
 				<div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">

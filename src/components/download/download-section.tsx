@@ -8,7 +8,7 @@ export function DownloadSection() {
 		<section
 			id="download"
 			aria-labelledby="download-heading"
-			className="relative -mb-px flex min-h-[68vh] w-full items-center justify-center overflow-hidden bg-background px-4 pt-28 pb-36 sm:px-6 sm:pt-36 sm:pb-44"
+			className="relative -mb-px flex min-h-dvh w-full items-center justify-center overflow-hidden bg-background px-4 pt-28 pb-36 sm:px-6 sm:pt-36 sm:pb-44"
 		>
 			{/* Atmospheric Sapphire Grainient */}
 			<div className="pointer-events-auto absolute inset-0 z-0">

@@ -1,153 +1,165 @@
-import { HOW_IT_WORKS_CARDS } from "@/constants/landing-data";
-import { ArrowUpRight, Layers } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { StepCaptionOverlay } from "@/components/how-it-works/step-caption-overlay";
+import { StepProgressRail } from "@/components/how-it-works/step-progress-rail";
+import { HOW_IT_WORKS_STEPS } from "@/constants/landing-data";
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
+
+const RailSceneCanvas = lazy(() => import("@/components/how-it-works/rail-scene-canvas"));
+
+const STEP_COUNT = HOW_IT_WORKS_STEPS.length;
+
+function getInitialReducedMotion(): boolean {
+	if (typeof window === "undefined") return false;
+	return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
 
 export function HowItWorksSection() {
-	const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-	const rafRef = useRef<number | null>(null);
+	const trackRef = useRef<HTMLDivElement>(null);
+	const progressRef = useRef(0);
 
+	const [activeStep, setActiveStep] = useState(0);
+	const [shouldMount3D, setShouldMount3D] = useState(false);
+	const [reducedMotion, setReducedMotion] = useState(getInitialReducedMotion);
+
+	// Listen for OS reduced-motion preference changes
 	useEffect(() => {
-		const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-		if (prefersReduced) return;
+		const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+		const handleChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+		mq.addEventListener("change", handleChange);
+		return () => mq.removeEventListener("change", handleChange);
+	}, []);
 
-		const updateCardDepth = () => {
-			const cards = cardRefs.current;
-			for (let i = 0; i < cards.length; i++) {
-				const current = cards[i];
-				if (!current) continue;
-				const next = cards[i + 1];
-				if (!next) {
-					current.style.transform = "scale(1)";
-					current.style.opacity = "1";
-					continue;
+	// Lazy-mount the Three.js chunk only as the user approaches this section
+	useEffect(() => {
+		const el = trackRef.current;
+		if (!el || shouldMount3D) return undefined;
+		const observer = new IntersectionObserver(
+			(entries) => {
+				if (entries.some((entry) => entry.isIntersecting)) {
+					setShouldMount3D(true);
+					observer.disconnect();
 				}
-				const currentRect = current.getBoundingClientRect();
-				const nextRect = next.getBoundingClientRect();
-				const cardHeight = currentRect.height || 320;
-				const gap = nextRect.top - currentRect.top;
-				const coverage = Math.min(Math.max(1 - gap / cardHeight, 0), 1);
+			},
+			{ rootMargin: "320px" },
+		);
+		observer.observe(el);
+		return () => observer.disconnect();
+	}, [shouldMount3D]);
 
-				const scale = 1 - 0.045 * coverage;
-				const opacity = 1 - 0.22 * coverage;
-				current.style.transform = `scale(${scale.toFixed(4)})`;
-				current.style.opacity = opacity.toFixed(3);
-				current.style.transformOrigin = "50% 0%";
-			}
+	// Native page-scroll progress driver (updates ref directly, only re-renders on step change)
+	useEffect(() => {
+		if (reducedMotion) return undefined;
+
+		const updateFromScroll = () => {
+			const track = trackRef.current;
+			if (!track) return;
+			const rect = track.getBoundingClientRect();
+			const scrollable = track.offsetHeight - window.innerHeight;
+			if (scrollable <= 0) return;
+
+			const raw = Math.min(1, Math.max(0, -rect.top / scrollable));
+			progressRef.current = raw;
+
+			const nextIdx = Math.min(STEP_COUNT - 1, Math.max(0, Math.round(raw * (STEP_COUNT - 1))));
+			setActiveStep((prev) => (prev === nextIdx ? prev : nextIdx));
 		};
 
-		const onScroll = () => {
-			if (rafRef.current !== null) return;
-			rafRef.current = window.requestAnimationFrame(() => {
-				updateCardDepth();
-				rafRef.current = null;
-			});
-		};
-
-		window.addEventListener("scroll", onScroll, { passive: true });
-		window.addEventListener("resize", onScroll, { passive: true });
-		updateCardDepth();
+		window.addEventListener("scroll", updateFromScroll, { passive: true });
+		window.addEventListener("resize", updateFromScroll, { passive: true });
+		updateFromScroll();
 
 		return () => {
-			window.removeEventListener("scroll", onScroll);
-			window.removeEventListener("resize", onScroll);
-			if (rafRef.current !== null) {
-				window.cancelAnimationFrame(rafRef.current);
-				rafRef.current = null;
-			}
+			window.removeEventListener("scroll", updateFromScroll);
+			window.removeEventListener("resize", updateFromScroll);
 		};
-	}, []);
+	}, [reducedMotion]);
+
+	const handleSelectStep = useCallback(
+		(index: number) => {
+			const clamped = Math.min(STEP_COUNT - 1, Math.max(0, index));
+			const targetProgress = STEP_COUNT > 1 ? clamped / (STEP_COUNT - 1) : 0;
+
+			if (reducedMotion) {
+				progressRef.current = targetProgress;
+				setActiveStep(clamped);
+				return;
+			}
+
+			const track = trackRef.current;
+			if (!track) return;
+			const scrollable = track.offsetHeight - window.innerHeight;
+			const trackTop = track.getBoundingClientRect().top + window.scrollY;
+			window.scrollTo({
+				top: trackTop + targetProgress * Math.max(0, scrollable),
+				behavior: "smooth",
+			});
+		},
+		[reducedMotion],
+	);
+
+	const currentStep = HOW_IT_WORKS_STEPS[activeStep];
 
 	return (
 		<section
 			id="how-it-works"
 			aria-labelledby="how-it-works-heading"
-			className="relative scroll-mt-4 px-4 pt-20 pb-24 sm:scroll-mt-6 sm:px-6 sm:pt-24 sm:pb-28"
+			className="relative min-h-dvh scroll-mt-4 pt-20 pb-8 sm:scroll-mt-6 sm:pt-24 sm:pb-12"
 		>
-			<div className="mx-auto max-w-4xl">
-				{/* Section Header */}
-				<div className="mx-auto max-w-2xl text-center">
-					<h2
-						id="how-it-works-heading"
-						className="text-3xl font-extrabold tracking-[-0.03em] text-foreground sm:text-5xl"
-					>
-						How it works.
-					</h2>
-					<p className="mx-auto mt-3.5 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-						Manual student forms take ten minutes of fragile tab-switching. The portal handles
-						everything locally and only pauses for your inbox code.
-					</p>
-				</div>
+			{/* Section Header */}
+			<div className="mx-auto max-w-xl px-4 text-center sm:px-6">
+				<h2
+					id="how-it-works-heading"
+					className="text-3xl font-extrabold tracking-[-0.03em] text-foreground sm:text-5xl"
+				>
+					How it works.
+				</h2>
+				<p className="mx-auto mt-3.5 max-w-xl text-base leading-relaxed text-balance text-muted-foreground sm:text-lg">
+					Follow the four-step local pipeline from profile setup to your official Google One offer
+					link.
+				</p>
+			</div>
 
-				{/* Sticky Stacking Pipeline Cards */}
-				<div className="relative mt-14 sm:mt-20">
-					{HOW_IT_WORKS_CARDS.map((card, idx) => (
-						<div
-							key={card.id}
-							ref={(el) => {
-								cardRefs.current[idx] = el;
-							}}
-							style={{
-								top: `calc(88px + ${idx} * 14px)`,
-								zIndex: idx + 1,
-							}}
-							className="surface-card sticky mb-10 rounded-3xl border border-white/10 bg-card/96 p-6 backdrop-blur-xl will-change-transform sm:mb-14 sm:p-8"
-						>
-							<div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/50 pb-5">
-								<div className="flex items-center gap-3">
-									<span className="flex size-7 items-center justify-center rounded-full bg-primary/14 font-mono text-xs font-bold text-primary">
-										{card.step}
-									</span>
-									<h3 className="text-lg font-bold tracking-tight text-foreground sm:text-2xl">
-										{card.title}
-									</h3>
-								</div>
+			{/* Full-bleed continuous native-scroll 3D rail track */}
+			<div
+				ref={trackRef}
+				className={
+					reducedMotion
+						? "relative mt-6 h-[min(78dvh,640px)] w-full"
+						: "relative mt-6 h-[270vh] w-full sm:h-[300vh]"
+				}
+			>
+				<div className="sticky top-0 h-dvh w-full overflow-hidden bg-background">
+					{/* Seamless atmospheric glow + top/bottom edge blends into the page */}
+					<div
+						aria-hidden="true"
+						className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_50%_45%,rgba(37,99,235,0.1)_0%,rgba(9,12,18,0)_66%)]"
+					/>
+					<div
+						aria-hidden="true"
+						className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-linear-to-b from-background to-transparent"
+					/>
+					<div
+						aria-hidden="true"
+						className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-28 bg-linear-to-t from-background to-transparent"
+					/>
 
-								<span className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-muted/40 px-3 py-1 font-mono text-xs font-medium text-muted-foreground">
-									<Layers className="size-3 text-primary" aria-hidden="true" />
-									<span>{card.phase}</span>
-								</span>
-							</div>
+					{/* Lazy-loaded Three.js Camera-on-a-Rail Scene */}
+					{shouldMount3D ? (
+						<Suspense fallback={null}>
+							<RailSceneCanvas progressRef={progressRef} reducedMotion={reducedMotion} />
+						</Suspense>
+					) : null}
 
-							<p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-								{card.description}
-							</p>
+					{/* Step jump buttons shown only for reduced-motion fallback */}
+					{reducedMotion ? (
+						<StepProgressRail
+							steps={HOW_IT_WORKS_STEPS}
+							activeIndex={activeStep}
+							onSelectStep={handleSelectStep}
+						/>
+					) : null}
 
-							<div className="mt-6 grid grid-cols-2 gap-4 border-t border-border/50 pt-5 sm:grid-cols-4">
-								{card.meta.map((item) => (
-									<div key={item.label} className="flex flex-col gap-1">
-										<span className="text-[11px] font-medium text-muted-foreground">
-											{item.label}
-										</span>
-										<span
-											className={
-												item.isAccent
-													? "text-sm font-semibold text-primary"
-													: "text-sm font-semibold text-foreground"
-											}
-										>
-											{item.value}
-										</span>
-									</div>
-								))}
-							</div>
-
-							{card.actionLink ? (
-								<div className="mt-5 border-t border-border/50 pt-4">
-									<a
-										href={card.actionLink.url}
-										target="_blank"
-										rel="noreferrer noopener"
-										className="inline-flex items-center gap-1.5 text-xs font-medium text-primary transition-colors duration-150 hover:text-primary/80 hover:underline"
-									>
-										<span>{card.actionLink.label}</span>
-										<ArrowUpRight className="size-3.5" aria-hidden="true" />
-									</a>
-								</div>
-							) : null}
-						</div>
-					))}
-
-					<div className="h-[24vh] w-full" aria-hidden="true" />
+					{/* Active Step Editorial Caption */}
+					<StepCaptionOverlay step={currentStep} />
 				</div>
 			</div>
 		</section>

@@ -98,83 +98,43 @@ export const BROWSER_OPTIONS = ["Auto-Detect", "Google Chrome", "Microsoft Edge"
 
 export type BrowserOption = (typeof BROWSER_OPTIONS)[number];
 
-export interface HowItWorksCardData {
+export interface HowItWorksStep {
 	id: string;
 	step: string;
+	kicker: string;
 	title: string;
-	phase: string;
 	description: string;
-	meta: readonly {
-		label: string;
-		value: string;
-		isAccent?: boolean;
-	}[];
-	actionLink?: {
-		label: string;
-		url: string;
-	};
 }
 
-export const HOW_IT_WORKS_CARDS: readonly HowItWorksCardData[] = [
+export const HOW_IT_WORKS_STEPS: readonly HowItWorksStep[] = [
 	{
 		id: "profile",
 		step: "01",
-		title: "Set your target Gmail",
-		phase: "Profile setup",
-		description:
-			"Enter your personal @gmail.com address and click Randomize to format student demographic details automatically—or customize any field yourself.",
-		meta: [
-			{ label: "Target Account", value: "Personal @gmail.com" },
-			{ label: "Profile Data", value: "1-click generator" },
-			{ label: "Validation", value: "Pre-flight checked", isAccent: true },
-			{ label: "Storage", value: "Local PC only" },
-		],
+		kicker: "01 / Profile Setup",
+		title: "Format once, ready to run.",
+		description: "Generate compliant student profile details locally in a single click.",
 	},
 	{
-		id: "engine",
+		id: "browser",
 		step: "02",
-		title: "Run local browser automation",
-		phase: "Playwright cascade",
-		description:
-			"Click Get 1-Year Access Link. The portal attaches to your installed Chrome, Edge, or Brave in the background and completes the partner onboarding flow.",
-		meta: [
-			{ label: "Browser Engine", value: "Chrome · Edge · Brave" },
-			{ label: "Extra Downloads", value: "0 MB browser bloat", isAccent: true },
-			{ label: "Portable Mode", value: "Silent headless run" },
-			{ label: "Gateway Guard", value: "50s timeout + retry" },
-		],
+		kicker: "02 / Local Browser",
+		title: "Uses the browser you have.",
+		description: "Playwright attaches to Chrome, Edge, or Brave—zero 400 MB browser downloads.",
 	},
 	{
-		id: "otp",
+		id: "confirm",
 		step: "03",
-		title: "Confirm your 6-digit code",
-		phase: "Human-in-the-loop",
+		kicker: "03 / Safe Confirmation",
+		title: "Pauses when you're needed.",
 		description:
-			"When the verification email reaches your inbox, enter the 6-digit code in the sanitized OTP prompt. If a Turnstile or CAPTCHA appears, the app pauses safely.",
-		meta: [
-			{ label: "OTP Prompt", value: "6-digit numeric filter" },
-			{ label: "Paste Support", value: "Auto-sanitized" },
-			{ label: "Challenge Guard", value: "Turnstile & CAPTCHA safe", isAccent: true },
-			{ label: "Recovery", value: "CDP session resume" },
-		],
+			"Confirm your inbox code locally while Turnstile and CAPTCHA guards protect your session.",
 	},
 	{
 		id: "redeem",
 		step: "04",
-		title: "Extract and activate on Google One",
-		phase: "Canonical offer link",
-		description:
-			"The portal resolves redirect chains into a permanent one.google.com/offer link, saves a backup copy in results/, and lets you activate 12 months at $0.00 today.",
-		meta: [
-			{ label: "Output Format", value: "one.google.com/offer/..." },
-			{ label: "Local Archive", value: "Saved in results/" },
-			{ label: "Charged Today", value: "$0.00 (12 Months)", isAccent: true },
-			{ label: "Auto-Renew", value: "Cancel anytime" },
-		],
-		actionLink: {
-			label: "Manage Google One subscriptions",
-			url: APP_INFO.googleSubsUrl,
-		},
+		kicker: "04 / Link & Archive",
+		title: "Clean link, saved locally.",
+		description: "Resolves your official Google One offer URL and archives a backup in results/.",
 	},
 ] as const;
 
