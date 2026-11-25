@@ -106,3 +106,7 @@ If this project saved you time, you can support ongoing open-source maintenance:
 ## Disclaimer
 
 This repository hosts the landing page for an independent open-source project and is not affiliated with, sponsored by, or endorsed by Google LLC, Alphabet Inc., or Internshala.
+
+## License
+
+This repository is licensed under the [MIT License](LICENSE).

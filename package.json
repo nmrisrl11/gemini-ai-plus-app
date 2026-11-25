@@ -1,7 +1,21 @@
 {
 	"name": "gemini-ai-plus-app",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"private": true,
+	"description": "Landing page for Google AI Plus Portal — an independent, open-source Windows desktop utility.",
+	"homepage": "https://gemini-ai-plus-portal.vercel.app",
+	"bugs": {
+		"url": "https://github.com/nmrisrl11/gemini-ai-plus-app/issues"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "Nomer Israel",
+		"url": "https://www.nmrisrl.dev"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nmrisrl11/gemini-ai-plus-app.git"
+	},
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
