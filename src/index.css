@@ -2,12 +2,19 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-	--font-heading: var(--font-sans);
-	--font-sans: "Geist Variable", sans-serif;
+	--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+	--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+	--font-sans: "Geist Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	--font-heading:
+		"Geist Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	--font-mono:
+		"Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
 	--color-sidebar-ring: var(--sidebar-ring);
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -39,6 +46,11 @@
 	--color-card: var(--card);
 	--color-foreground: var(--foreground);
 	--color-background: var(--background);
+
+	--color-brand-cobalt: var(--brand-cobalt);
+	--color-brand-sky: var(--brand-sky);
+	--color-surface-console: var(--surface-console);
+
 	--radius-sm: calc(var(--radius) * 0.6);
 	--radius-md: calc(var(--radius) * 0.8);
 	--radius-lg: var(--radius);
@@ -48,83 +60,300 @@
 	--radius-4xl: calc(var(--radius) * 2.6);
 }
 
-:root {
-	--background: oklch(1 0 0);
-	--foreground: oklch(0.145 0 0);
-	--card: oklch(1 0 0);
-	--card-foreground: oklch(0.145 0 0);
-	--popover: oklch(1 0 0);
-	--popover-foreground: oklch(0.145 0 0);
-	--primary: oklch(0.205 0 0);
-	--primary-foreground: oklch(0.985 0 0);
-	--secondary: oklch(0.97 0 0);
-	--secondary-foreground: oklch(0.205 0 0);
-	--muted: oklch(0.97 0 0);
-	--muted-foreground: oklch(0.556 0 0);
-	--accent: oklch(0.97 0 0);
-	--accent-foreground: oklch(0.205 0 0);
-	--destructive: oklch(0.577 0.245 27.325);
-	--border: oklch(0.922 0 0);
-	--input: oklch(0.922 0 0);
-	--ring: oklch(0.708 0 0);
-	--chart-1: oklch(0.87 0 0);
-	--chart-2: oklch(0.556 0 0);
-	--chart-3: oklch(0.439 0 0);
-	--chart-4: oklch(0.371 0 0);
-	--chart-5: oklch(0.269 0 0);
-	--radius: 0.625rem;
-	--sidebar: oklch(0.985 0 0);
-	--sidebar-foreground: oklch(0.145 0 0);
-	--sidebar-primary: oklch(0.205 0 0);
-	--sidebar-primary-foreground: oklch(0.985 0 0);
-	--sidebar-accent: oklch(0.97 0 0);
-	--sidebar-accent-foreground: oklch(0.205 0 0);
-	--sidebar-border: oklch(0.922 0 0);
-	--sidebar-ring: oklch(0.708 0 0);
+/*
+ * Midnight Sapphire & Obsidian Brand Palette
+ * Dark-only by default — zero FOUC, harmonized with Gemini AI Plus Portal desktop app
+ */
+:root,
+.dark {
+	/* Custom easing curves (Emil Kowalski design-engineering system) */
+	--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+	--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+	--ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+	/* Layered midnight obsidian surfaces */
+	--background: oklch(0.142 0.014 256); /* #090c12 Midnight Obsidian */
+	--foreground: oklch(0.968 0.006 248); /* #f1f5f9 Ice Slate */
+	--card: oklch(0.184 0.018 256); /* #111622 Slate Glass */
+	--card-foreground: oklch(0.968 0.006 248);
+	--popover: oklch(0.206 0.02 256);
+	--popover-foreground: oklch(0.968 0.006 248);
+
+	/* Electric Sky-Sapphire Core */
+	--primary: oklch(0.755 0.148 228); /* #38bdf8 Luminous Sky Blue */
+	--primary-foreground: oklch(0.14 0.02 256);
+
+	--secondary: oklch(0.232 0.022 256);
+	--secondary-foreground: oklch(0.96 0.008 248);
+
+	--muted: oklch(0.215 0.018 256);
+	--muted-foreground: oklch(0.68 0.02 252); /* #94a3b8 Calm Slate */
+
+	--accent: oklch(0.25 0.028 252);
+	--accent-foreground: oklch(0.968 0.006 248);
+
+	--destructive: oklch(0.62 0.21 25);
+	--border: oklch(0.3 0.022 254 / 0.65); /* Crisp slate hairline */
+	--input: oklch(0.28 0.022 254);
+	--ring: oklch(0.755 0.148 228 / 0.65);
+
+	--brand-cobalt: #2563eb;
+	--brand-sky: #38bdf8;
+	--surface-console: #070a10;
+
+	--chart-1: oklch(0.755 0.148 228);
+	--chart-2: oklch(0.56 0.21 258);
+	--chart-3: oklch(0.69 0.15 162);
+	--chart-4: oklch(0.48 0.08 254);
+	--chart-5: oklch(0.35 0.05 254);
+
+	--radius: 0.75rem;
+
+	--sidebar: oklch(0.16 0.016 256);
+	--sidebar-foreground: oklch(0.968 0.006 248);
+	--sidebar-primary: oklch(0.755 0.148 228);
+	--sidebar-primary-foreground: oklch(0.14 0.02 256);
+	--sidebar-accent: oklch(0.232 0.022 256);
+	--sidebar-accent-foreground: oklch(0.968 0.006 248);
+	--sidebar-border: oklch(0.3 0.022 254 / 0.65);
+	--sidebar-ring: oklch(0.755 0.148 228 / 0.65);
+
+	/* Layered physical shadows */
+	--shadow-chassis:
+		inset 0 1px 0 0 rgba(255, 255, 255, 0.07), inset 0 -1px 0 0 rgba(0, 0, 0, 0.45),
+		0 16px 40px -12px rgba(0, 0, 0, 0.6);
+	--shadow-card: inset 0 1px 0 0 rgba(255, 255, 255, 0.06), 0 12px 32px -12px rgba(0, 0, 0, 0.55);
+
+	/* Scrollbar tokens */
+	--scrollbar-track: transparent;
+	--scrollbar-thumb: rgba(148, 163, 184, 0.2);
+	--scrollbar-thumb-hover: rgba(56, 189, 248, 0.45);
+	--scrollbar-thumb-active: rgba(56, 189, 248, 0.75);
 }
 
-.dark {
-	--background: oklch(0.145 0 0);
-	--foreground: oklch(0.985 0 0);
-	--card: oklch(0.205 0 0);
-	--card-foreground: oklch(0.985 0 0);
-	--popover: oklch(0.205 0 0);
-	--popover-foreground: oklch(0.985 0 0);
-	--primary: oklch(0.922 0 0);
-	--primary-foreground: oklch(0.205 0 0);
-	--secondary: oklch(0.269 0 0);
-	--secondary-foreground: oklch(0.985 0 0);
-	--muted: oklch(0.269 0 0);
-	--muted-foreground: oklch(0.708 0 0);
-	--accent: oklch(0.269 0 0);
-	--accent-foreground: oklch(0.985 0 0);
-	--destructive: oklch(0.704 0.191 22.216);
-	--border: oklch(1 0 0 / 10%);
-	--input: oklch(1 0 0 / 15%);
-	--ring: oklch(0.556 0 0);
-	--chart-1: oklch(0.87 0 0);
-	--chart-2: oklch(0.556 0 0);
-	--chart-3: oklch(0.439 0 0);
-	--chart-4: oklch(0.371 0 0);
-	--chart-5: oklch(0.269 0 0);
-	--sidebar: oklch(0.205 0 0);
-	--sidebar-foreground: oklch(0.985 0 0);
-	--sidebar-primary: oklch(0.488 0.243 264.376);
-	--sidebar-primary-foreground: oklch(0.985 0 0);
-	--sidebar-accent: oklch(0.269 0 0);
-	--sidebar-accent-foreground: oklch(0.985 0 0);
-	--sidebar-border: oklch(1 0 0 / 10%);
-	--sidebar-ring: oklch(0.556 0 0);
+@media (prefers-contrast: more) {
+	:root,
+	.dark {
+		--scrollbar-thumb: rgba(255, 255, 255, 0.45);
+		--scrollbar-thumb-hover: #38bdf8;
+		--scrollbar-thumb-active: #7dd3fc;
+	}
 }
 
 @layer base {
 	* {
 		@apply border-border outline-ring/50;
+		scrollbar-width: thin;
+		scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 	}
-	body {
-		@apply bg-background text-foreground;
-	}
+
 	html {
 		@apply font-sans;
+		color-scheme: dark;
+		scroll-padding-top: 5.5rem;
+		overflow-x: clip;
 	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		html {
+			scroll-behavior: smooth;
+		}
+	}
+
+	body {
+		@apply bg-background text-foreground;
+		color-scheme: dark;
+		font-feature-settings: "cv01", "cv02", "cv03", "tnum";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		overflow-x: clip;
+	}
+
+	:where(
+		a,
+		button,
+		input,
+		select,
+		textarea,
+		summary,
+		[tabindex]:not([tabindex="-1"])
+	):focus-visible {
+		outline: 2px solid var(--primary);
+		outline-offset: 2px;
+	}
+
+	button,
+	[role="button"],
+	summary {
+		user-select: none;
+		-webkit-user-select: none;
+		touch-action: manipulation;
+	}
+}
+
+::selection {
+	background-color: rgba(56, 189, 248, 0.25);
+	color: #f8fafc;
+}
+
+/* Custom sleek scrollbar (Chromium / Safari / Edge) */
+::-webkit-scrollbar {
+	width: 7px;
+	height: 7px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-thumb);
+	border-radius: 9999px;
+	border: 1.5px solid transparent;
+	background-clip: padding-box;
+	transition: background-color 180ms ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: var(--scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+	background-color: var(--scrollbar-thumb-active);
+}
+
+::-webkit-scrollbar-corner {
+	background: transparent;
+}
+
+::-webkit-scrollbar-button {
+	display: none;
+	width: 0;
+	height: 0;
+}
+
+/*
+ * Tactile press & hover utilities (Emil Kowalski principles)
+ * Hover elevation/transforms are strictly gated behind fine pointer devices.
+ */
+.tactile-press {
+	transition-property: transform, background-color, border-color, color, box-shadow, opacity;
+	transition-duration: 160ms;
+	transition-timing-function: var(--ease-out);
+}
+
+.tactile-press:active {
+	transform: scale(0.97);
+}
+
+.tactile-pill {
+	transition-property: transform, box-shadow, opacity, background-color;
+	transition-duration: 200ms;
+	transition-timing-function: var(--ease-out);
+}
+
+.tactile-pill:active {
+	transform: scale(0.98);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.hover-lift {
+		transition-property: transform, border-color, box-shadow, background-color;
+		transition-duration: 180ms;
+		transition-timing-function: var(--ease-out);
+	}
+
+	.hover-lift:hover {
+		transform: translateY(-2px);
+	}
+
+	.hover-arrow-shift:hover [data-arrow] {
+		transform: translateX(2px);
+	}
+
+	.hover-icon-scale:hover [data-icon-scale] {
+		transform: scale(1.04) rotate(-4deg);
+	}
+}
+
+/* Origin-aware mobile popover dropdown */
+.mobile-nav-popover {
+	transform-origin: top center;
+	opacity: 1;
+	transform: translateY(0) scale(1);
+	transition:
+		opacity 180ms var(--ease-out),
+		transform 200ms var(--ease-out);
+
+	@starting-style {
+		opacity: 0;
+		transform: translateY(-6px) scale(0.96);
+	}
+}
+
+/* Subtle blur-masked state crossfade for live profile randomization */
+.profile-crossfade {
+	transition:
+		filter 180ms ease,
+		opacity 180ms ease;
+}
+
+.profile-crossfade[data-transitioning="true"] {
+	filter: blur(2px);
+	opacity: 0.65;
+}
+
+/* Native accessible <details> accordion with progressive intrinsic-size animation */
+.faq-item > summary {
+	list-style: none;
+}
+
+.faq-item > summary::-webkit-details-marker {
+	display: none;
+}
+
+.faq-item::details-content {
+	interpolate-size: allow-keywords;
+	overflow: clip;
+	contain: layout;
+}
+
+.faq-item:not([open])::details-content {
+	block-size: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.faq-item::details-content {
+		transition:
+			block-size 240ms var(--ease-out),
+			content-visibility 240ms var(--ease-out),
+			display 240ms var(--ease-out);
+		transition-behavior: allow-discrete;
+	}
+
+	.faq-item [data-faq-plus] {
+		transition:
+			transform 200ms var(--ease-out),
+			border-color 180ms ease,
+			color 180ms ease;
+	}
+
+	.faq-item[open] [data-faq-plus] {
+		transform: rotate(45deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.faq-item[open] [data-faq-plus] {
+		transform: rotate(45deg);
+	}
+}
+
+/* Subtle surface shadows */
+.surface-chassis {
+	box-shadow: var(--shadow-chassis);
+}
+
+.surface-card {
+	box-shadow: var(--shadow-card);
 }

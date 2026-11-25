@@ -1,0 +1,141 @@
+import { APP_INFO } from "@/constants/app-info";
+import { ArrowUp } from "lucide-react";
+
+const CURRENT_YEAR = new Date().getFullYear();
+
+export function Footer() {
+	const scrollToTop = () => {
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	};
+
+	return (
+		<footer className="relative z-10 -mt-px bg-background pt-16 pb-16 text-xs text-muted-foreground sm:pt-24 sm:pb-24">
+			<div className="mx-auto max-w-6xl px-4 sm:px-6">
+				<div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
+					{/* Brand Column */}
+					<div className="flex max-w-md flex-col gap-3.5">
+						<div className="flex items-center gap-2.5">
+							<img
+								src="/images/app_icon.png"
+								alt=""
+								aria-hidden="true"
+								width={32}
+								height={32}
+								loading="lazy"
+								className="size-8 shrink-0 object-contain"
+							/>
+							<span className="text-base font-bold tracking-tight text-foreground sm:text-lg">
+								{APP_INFO.name}
+							</span>
+						</div>
+
+						<p className="text-xs leading-relaxed text-muted-foreground sm:text-sm">
+							{APP_INFO.description}
+						</p>
+					</div>
+
+					{/* Typography-Driven Columns */}
+					<div className="grid grid-cols-2 gap-10 sm:gap-16 lg:gap-20">
+						<div className="flex flex-col gap-4">
+							<span className="text-xs font-semibold text-foreground">Portal</span>
+							<div className="flex flex-col gap-2.5 text-xs">
+								<a href="#preview" className="transition-colors duration-150 hover:text-foreground">
+									Interactive Preview
+								</a>
+								<a
+									href="#workflow"
+									className="transition-colors duration-150 hover:text-foreground"
+								>
+									How It Works
+								</a>
+								<a
+									href="#features"
+									className="transition-colors duration-150 hover:text-foreground"
+								>
+									Architecture
+								</a>
+								<a href="#install" className="transition-colors duration-150 hover:text-foreground">
+									Install &amp; CLI
+								</a>
+								<a href="#faq" className="transition-colors duration-150 hover:text-foreground">
+									Questions &amp; Answers
+								</a>
+							</div>
+						</div>
+
+						<div className="flex flex-col gap-4">
+							<span className="text-xs font-semibold text-foreground">Resources</span>
+							<div className="flex flex-col gap-2.5 text-xs">
+								<a
+									href={APP_INFO.latestReleaseUrl}
+									target="_blank"
+									rel="noreferrer noopener"
+									className="transition-colors duration-150 hover:text-foreground"
+								>
+									Download Latest (.exe)
+								</a>
+								<a
+									href={APP_INFO.githubUrl}
+									target="_blank"
+									rel="noreferrer noopener"
+									className="transition-colors duration-150 hover:text-foreground"
+								>
+									GitHub Repository
+								</a>
+								<a
+									href={APP_INFO.githubReleasesUrl}
+									target="_blank"
+									rel="noreferrer noopener"
+									className="transition-colors duration-150 hover:text-foreground"
+								>
+									Releases &amp; Checksums
+								</a>
+								<a
+									href={APP_INFO.licenseUrl}
+									target="_blank"
+									rel="noreferrer noopener"
+									className="transition-colors duration-150 hover:text-foreground"
+								>
+									MIT License
+								</a>
+								<a href="#support" className="transition-colors duration-150 hover:text-foreground">
+									Support Development
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				{/* Hairline Legal & Back-to-top Bar */}
+				<div className="mt-14 border-t border-border/40 pt-8 sm:mt-16">
+					<div className="flex flex-col items-start justify-between gap-4 text-[11px] leading-relaxed text-muted-foreground/80 sm:flex-row sm:items-center">
+						<div className="flex flex-col gap-1">
+							<div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+								<span>
+									© {CURRENT_YEAR} {APP_INFO.name}.
+								</span>
+								<span aria-hidden="true">·</span>
+								<span>
+									Independent open-source utility. Not affiliated with Google LLC, Alphabet Inc., or
+									Internshala.
+								</span>
+							</div>
+							<span className="text-[10px] text-muted-foreground/65">
+								Google, Google One, Google AI Plus, and Gemini are trademarks of Google LLC.
+							</span>
+						</div>
+
+						<button
+							type="button"
+							onClick={scrollToTop}
+							className="tactile-press inline-flex cursor-pointer items-center gap-1.5 font-mono text-[11px] whitespace-nowrap text-muted-foreground hover:text-foreground"
+						>
+							<span>Back to top</span>
+							<ArrowUp className="size-3" aria-hidden="true" />
+						</button>
+					</div>
+				</div>
+			</div>
+		</footer>
+	);
+}
