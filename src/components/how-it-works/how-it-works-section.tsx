@@ -102,7 +102,7 @@ export function HowItWorksSection() {
 		<section
 			id="how-it-works"
 			aria-labelledby="how-it-works-heading"
-			className="relative min-h-dvh scroll-mt-4 pt-20 pb-8 sm:scroll-mt-6 sm:pt-24 sm:pb-12"
+			className="sticky-section-scroll-fade relative min-h-dvh scroll-mt-4 pt-20 pb-8 sm:scroll-mt-6 sm:pt-24 sm:pb-12"
 		>
 			{/* Section Header */}
 			<div className="mx-auto max-w-xl px-4 text-center sm:px-6">

@@ -1,0 +1,140 @@
+/*
+ * Zero-shift interaction utilities (Emil Kowalski restraint)
+ * Transitions only color, background, border-color, and opacity — never scale, shadow, or box size.
+ */
+.tactile-press {
+	transition-property: background-color, border-color, color, opacity;
+	transition-duration: 150ms;
+	transition-timing-function: var(--ease-out);
+}
+
+.tactile-pill {
+	transition-property: background-color, border-color, color, opacity;
+	transition-duration: 160ms;
+	transition-timing-function: var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.hover-arrow-shift:hover [data-arrow] {
+		transform: translateX(2px);
+	}
+}
+
+/* Zero-shift subtle opacity entrance for tab stages */
+.stage-fade-enter {
+	opacity: 1;
+	transition: opacity 160ms var(--ease-out);
+
+	@starting-style {
+		opacity: 0;
+	}
+}
+
+/* Origin-aware mobile popover dropdown (no scale distortion) */
+.mobile-nav-popover {
+	transform-origin: top center;
+	opacity: 1;
+	transform: translateY(0);
+	transition:
+		opacity 160ms var(--ease-out),
+		transform 180ms var(--ease-out);
+
+	@starting-style {
+		opacity: 0;
+		transform: translateY(-4px);
+	}
+}
+
+/* Step caption entrance for scroll-linked How it works overlay */
+.caption-step-enter {
+	opacity: 1;
+	transform: translateY(0);
+	transition:
+		opacity 180ms var(--ease-out),
+		transform 200ms var(--ease-out);
+
+	@starting-style {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.caption-step-enter,
+	.mobile-nav-popover {
+		transform: none;
+		transition: opacity 160ms ease;
+
+		@starting-style {
+			opacity: 0;
+			transform: none;
+		}
+	}
+}
+
+/* Subtle blur-masked state crossfade for live profile randomization */
+.profile-crossfade {
+	transition:
+		filter 180ms ease,
+		opacity 180ms ease;
+}
+
+.profile-crossfade[data-transitioning="true"] {
+	filter: blur(2px);
+	opacity: 0.65;
+}
+
+/* Native accessible <details> accordion with progressive intrinsic-size animation */
+.faq-item > summary {
+	list-style: none;
+}
+
+.faq-item > summary::-webkit-details-marker {
+	display: none;
+}
+
+.faq-item::details-content {
+	interpolate-size: allow-keywords;
+	overflow: clip;
+	contain: layout;
+}
+
+.faq-item:not([open])::details-content {
+	block-size: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.faq-item::details-content {
+		transition:
+			block-size 240ms var(--ease-out),
+			content-visibility 240ms var(--ease-out),
+			display 240ms var(--ease-out);
+		transition-behavior: allow-discrete;
+	}
+
+	.faq-item [data-faq-plus] {
+		transition:
+			transform 200ms var(--ease-out),
+			border-color 180ms ease,
+			color 180ms ease;
+	}
+
+	.faq-item[open] [data-faq-plus] {
+		transform: rotate(45deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.faq-item[open] [data-faq-plus] {
+		transform: rotate(45deg);
+	}
+}
+
+/* Subtle surface shadows */
+.surface-chassis {
+	box-shadow: var(--shadow-chassis);
+}
+
+.surface-card {
+	box-shadow: var(--shadow-card);
+}

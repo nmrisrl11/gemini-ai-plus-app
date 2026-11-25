@@ -32,7 +32,12 @@ Landing page for **[Google AI Plus Portal](https://github.com/nmrisrl11/gemini-a
 │   └── icons/                   # Multi-size PNG & WebP app icons (16–512px)
 └── src/
     ├── App.tsx                  # Page layout, skip link, and 404 route fallback
-    ├── index.css                # Sapphire dark palette, easing curves, and motion utilities
+    ├── index.css                # Stylesheet entry manifest
+    ├── styles/
+    │   ├── base.css             # Base resets, focus rings, and custom dark scrollbars
+    │   ├── interactions.css     # Zero-shift transitions, popovers, FAQ accordion, and surfaces
+    │   ├── scroll-animations.css # CSS scroll-driven section fade-in/out animations
+    │   └── theme.css            # Midnight Sapphire palette, Tailwind tokens, and shadows
     ├── constants/
     │   ├── app-info.ts          # Repository, release, and brand metadata
     │   └── landing-data.ts      # Structured copy for sections, demo profiles, and FAQs

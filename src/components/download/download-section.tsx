@@ -6,7 +6,7 @@ export function DownloadSection() {
 		<section
 			id="download"
 			aria-labelledby="download-heading"
-			className="relative -mb-px flex min-h-dvh w-full items-center justify-center overflow-hidden bg-background px-4 py-24 sm:px-6 sm:py-32"
+			className="section-scroll-fade relative -mb-px flex min-h-dvh w-full items-center justify-center overflow-hidden bg-background px-4 py-24 sm:px-6 sm:py-32"
 		>
 			{/* Rising GradientASCII WebGL2 Backdrop — mirrors the hero to close the page loop */}
 			<div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">

@@ -13,7 +13,7 @@ export function PreviewSection() {
 		<section
 			id="preview"
 			aria-labelledby="preview-heading"
-			className="relative flex min-h-dvh scroll-mt-4 flex-col justify-center px-4 pt-20 pb-24 sm:scroll-mt-6 sm:px-6 sm:pt-24 sm:pb-28"
+			className="section-scroll-fade relative flex min-h-dvh scroll-mt-4 flex-col justify-center px-4 pt-20 pb-24 sm:scroll-mt-6 sm:px-6 sm:pt-24 sm:pb-28"
 		>
 			<div className="mx-auto flex w-full max-w-5xl flex-col items-center">
 				{/* Section Header */}

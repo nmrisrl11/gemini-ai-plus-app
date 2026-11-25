@@ -1,0 +1,102 @@
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+
+	html {
+		@apply font-sans;
+		color-scheme: dark;
+		overflow-x: clip;
+		scrollbar-gutter: stable;
+	}
+
+	/* Prevent Radix Select scroll-lock from double-compensating scrollbar-gutter and shifting layout */
+	body[data-scroll-locked] {
+		margin-right: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		html {
+			scroll-behavior: smooth;
+		}
+	}
+
+	body {
+		@apply bg-background text-foreground;
+		color-scheme: dark;
+		font-feature-settings: "cv01", "cv02", "cv03", "tnum";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		overflow-x: clip;
+	}
+
+	:where(
+		a,
+		button,
+		input,
+		select,
+		textarea,
+		summary,
+		[tabindex]:not([tabindex="-1"])
+	):focus-visible {
+		outline: 2px solid var(--primary);
+		outline-offset: 2px;
+	}
+
+	button,
+	[role="button"],
+	summary {
+		user-select: none;
+		-webkit-user-select: none;
+		touch-action: manipulation;
+	}
+}
+
+::selection {
+	background-color: rgba(56, 189, 248, 0.25);
+	color: #f8fafc;
+}
+
+/* Sleek dark slate scrollbar (matches desktop app & ThreadFX; Firefox fallback scoped cleanly) */
+@supports not selector(::-webkit-scrollbar) {
+	* {
+		scrollbar-width: thin;
+		scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+	}
+}
+
+::-webkit-scrollbar {
+	width: 9px;
+	height: 9px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-thumb);
+	border-radius: 9999px;
+	border: 2px solid var(--scrollbar-track);
+	background-clip: padding-box;
+	transition: background-color 180ms ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: var(--scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+	background-color: var(--scrollbar-thumb-active);
+}
+
+::-webkit-scrollbar-corner {
+	background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-button {
+	display: none;
+	width: 0;
+	height: 0;
+}

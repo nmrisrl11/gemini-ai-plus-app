@@ -7,7 +7,7 @@ export function HeroSection() {
 	return (
 		<section
 			id="hero"
-			className="relative flex min-h-dvh w-full flex-col items-center justify-between overflow-hidden bg-background px-4 pt-20 pb-10 sm:px-6 sm:pt-24 sm:pb-12"
+			className="hero-scroll-fade relative flex min-h-dvh w-full flex-col items-center justify-between overflow-hidden bg-background px-4 pt-20 pb-10 sm:px-6 sm:pt-24 sm:pb-12"
 		>
 			{/* GradientASCII WebGL2 Backdrop */}
 			<div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">

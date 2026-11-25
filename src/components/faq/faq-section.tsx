@@ -19,7 +19,7 @@ export function FaqSection() {
 		<section
 			id="faq"
 			aria-labelledby="faq-heading"
-			className="relative flex min-h-dvh scroll-mt-4 flex-col justify-center px-4 pt-20 pb-24 sm:scroll-mt-6 sm:px-6 sm:pt-24 sm:pb-28"
+			className="section-scroll-fade relative flex min-h-dvh scroll-mt-4 flex-col justify-center px-4 pt-20 pb-24 sm:scroll-mt-6 sm:px-6 sm:pt-24 sm:pb-28"
 		>
 			<div className="mx-auto w-full max-w-3xl">
 				{/* Centered Editorial Header */}

@@ -1,0 +1,85 @@
+/* ==========================================================================
+ * Scroll-Driven Section Fade Animations (120 FPS Compositor-Thread Motion)
+ * Gated behind prefers-reduced-motion + @supports(animation-timeline: view())
+ * ========================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+	@supports (animation-timeline: scroll(root)) {
+		@keyframes cue-fade-out {
+			from {
+				opacity: 1;
+				transform: translateY(0);
+				pointer-events: auto;
+			}
+			to {
+				opacity: 0;
+				transform: translateY(12px);
+				pointer-events: none;
+			}
+		}
+
+		.hero-scroll-cue {
+			animation: cue-fade-out var(--ease-out) both;
+			animation-timeline: scroll(root);
+			animation-range: 0px 100px;
+		}
+	}
+
+	@supports ((animation-timeline: view()) and (animation-range: entry)) {
+		@keyframes hero-fade-out {
+			from {
+				opacity: 1;
+				transform: translateY(0);
+			}
+			to {
+				opacity: 0;
+				transform: translateY(-24px);
+			}
+		}
+
+		@keyframes section-fade {
+			entry 0% {
+				opacity: 0;
+				transform: translateY(28px);
+			}
+			entry 100%,
+			exit 20% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+			exit 100% {
+				opacity: 0;
+				transform: translateY(-24px);
+			}
+		}
+
+		/* Opacity-only fade for tall sticky-track sections so transform never breaks position: sticky */
+		@keyframes sticky-section-fade {
+			entry 0% {
+				opacity: 0;
+			}
+			entry 35%,
+			exit 65% {
+				opacity: 1;
+			}
+			exit 100% {
+				opacity: 0;
+			}
+		}
+
+		.hero-scroll-fade {
+			animation: hero-fade-out var(--ease-out) both;
+			animation-timeline: view(block);
+			animation-range: exit 50% exit 95%;
+		}
+
+		.section-scroll-fade {
+			animation: section-fade var(--ease-out) both;
+			animation-timeline: view(block);
+		}
+
+		.sticky-section-scroll-fade {
+			animation: sticky-section-fade var(--ease-out) both;
+			animation-timeline: view(block);
+		}
+	}
+}
