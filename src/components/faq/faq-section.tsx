@@ -65,38 +65,40 @@ export function FaqSection() {
 				</div>
 
 				{/* Numbered Hairline Disclosure Surface */}
-				<div className="mt-8 overflow-hidden rounded-[12px] border border-white/10 bg-[#0e1117] sm:mt-10">
-					<div className="divide-y divide-white/8">
-						{visibleItems.map((item, idx) => (
-							<details
-								key={`${activeCategory}-${item.id}`}
-								name="faq-accordion"
-								className="faq-item group"
-								open={idx === 0}
-							>
-								<summary className="flex w-full cursor-pointer items-start gap-4 px-5 py-5 text-left transition-colors duration-150 hover:bg-white/2 sm:px-6 sm:py-5.5">
-									<span
-										aria-hidden="true"
-										className="mt-0.5 w-6 shrink-0 font-mono text-xs text-muted-foreground/55 tabular-nums transition-colors duration-150 group-open:text-muted-foreground"
-									>
-										{String(idx + 1).padStart(2, "0")}
-									</span>
-									<span className="flex-1 text-sm font-semibold tracking-tight text-foreground sm:text-base">
-										{item.q}
-									</span>
-									<span
-										data-faq-plus
-										aria-hidden="true"
-										className="mt-0.5 flex size-5 shrink-0 items-center justify-center text-muted-foreground transition-colors duration-150 group-open:text-foreground group-hover:text-foreground"
-									>
-										<Plus className="size-4" />
-									</span>
-								</summary>
-								<div className="pr-10 pb-5 pl-5 sm:pr-14 sm:pb-6 sm:pl-16">
-									<p className="text-sm leading-relaxed text-muted-foreground">{item.a}</p>
-								</div>
-							</details>
-						))}
+				<div className="mt-8 min-h-104 sm:mt-10">
+					<div className="overflow-hidden rounded-[12px] border border-white/10 bg-[#0e1117]">
+						<div className="divide-y divide-white/8">
+							{visibleItems.map((item, idx) => (
+								<details
+									key={`${activeCategory}-${item.id}`}
+									name="faq-accordion"
+									className="faq-item group"
+									open={idx === 0}
+								>
+									<summary className="flex w-full cursor-pointer items-start gap-4 px-5 py-5 text-left transition-colors duration-150 hover:bg-white/2 sm:px-6 sm:py-5.5">
+										<span
+											aria-hidden="true"
+											className="mt-0.5 w-6 shrink-0 font-mono text-xs text-muted-foreground/55 tabular-nums transition-colors duration-150 group-open:text-muted-foreground"
+										>
+											{String(idx + 1).padStart(2, "0")}
+										</span>
+										<span className="flex-1 text-sm font-semibold tracking-tight text-foreground sm:text-base">
+											{item.q}
+										</span>
+										<span
+											data-faq-plus
+											aria-hidden="true"
+											className="mt-0.5 flex size-5 shrink-0 items-center justify-center text-muted-foreground transition-colors duration-150 group-open:text-foreground group-hover:text-foreground"
+										>
+											<Plus className="size-4" />
+										</span>
+									</summary>
+									<div className="pr-10 pb-5 pl-5 sm:pr-14 sm:pb-6 sm:pl-16">
+										<p className="text-sm leading-relaxed text-muted-foreground">{item.a}</p>
+									</div>
+								</details>
+							))}
+						</div>
 					</div>
 				</div>
 

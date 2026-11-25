@@ -31,12 +31,12 @@ export function PreviewConsole({
 					<button
 						type="button"
 						onClick={onCopyLog}
-						className="tactile-press inline-flex h-6.5 cursor-pointer items-center rounded-[5px] border border-[#2a3345] bg-[#1a202d] px-2.5 text-[11px] font-medium text-muted-foreground hover:text-foreground"
+						className="tactile-press inline-flex h-6.5 w-20 cursor-pointer items-center justify-center rounded-[5px] border border-[#2a3345] bg-[#1a202d] px-2.5 text-[11px] font-medium text-muted-foreground hover:text-foreground"
 					>
 						{copiedLog ? "Copied" : "Copy Log"}
 					</button>
-					<span className="inline-flex h-6.5 items-center gap-1.5 rounded-[5px] border border-[#1e2430] bg-[#0f131b] px-2.5 font-mono text-[11px] font-medium text-emerald-400">
-						<span className={cn("size-1.5 rounded-full", statusDotColor)} />
+					<span className="inline-flex h-6.5 min-w-32 items-center justify-center gap-1.5 rounded-[5px] border border-[#1e2430] bg-[#0f131b] px-2.5 font-mono text-[11px] font-medium text-emerald-400">
+						<span className={cn("size-1.5 shrink-0 rounded-full", statusDotColor)} />
 						<span className="text-foreground/90">{statusLabel}</span>
 					</span>
 				</div>

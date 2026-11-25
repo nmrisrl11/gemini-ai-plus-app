@@ -1,5 +1,5 @@
 export const APP_INFO = {
-	name: "Gemini AI Plus Portal",
+	name: "Google AI Plus Portal",
 	shortName: "AI Plus Portal",
 	version: "1.0.0",
 	versionTag: "v1.0.0",

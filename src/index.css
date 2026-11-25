@@ -152,6 +152,12 @@
 		scrollbar-gutter: stable;
 	}
 
+	/* Prevent Radix Select scroll-lock from double-compensating scrollbar-gutter and shifting layout */
+	body[data-scroll-locked] {
+		margin-right: 0 !important;
+		padding-right: 0 !important;
+	}
+
 	@media (prefers-reduced-motion: no-preference) {
 		html {
 			scroll-behavior: smooth;
@@ -238,82 +244,77 @@
 }
 
 /*
- * Tactile press & hover utilities (Emil Kowalski principles)
- * Hover elevation/transforms are strictly gated behind fine pointer devices.
+ * Zero-shift interaction utilities (Emil Kowalski restraint)
+ * Transitions only color, background, border-color, and opacity — never scale, shadow, or box size.
  */
 .tactile-press {
-	transition-property: transform, background-color, border-color, color, box-shadow, opacity;
+	transition-property: background-color, border-color, color, opacity;
+	transition-duration: 150ms;
+	transition-timing-function: var(--ease-out);
+}
+
+.tactile-pill {
+	transition-property: background-color, border-color, color, opacity;
 	transition-duration: 160ms;
 	transition-timing-function: var(--ease-out);
 }
 
-.tactile-press:active {
-	transform: scale(0.97);
-}
-
-.tactile-pill {
-	transition-property: transform, box-shadow, opacity, background-color;
-	transition-duration: 200ms;
-	transition-timing-function: var(--ease-out);
-}
-
-.tactile-pill:active {
-	transform: scale(0.98);
-}
-
 @media (hover: hover) and (pointer: fine) {
 	.hover-lift {
-		transition-property: transform, border-color, box-shadow, background-color;
-		transition-duration: 180ms;
+		transition-property: border-color, background-color, color;
+		transition-duration: 160ms;
 		transition-timing-function: var(--ease-out);
-	}
-
-	.hover-lift:hover {
-		transform: translateY(-2px);
 	}
 
 	.hover-arrow-shift:hover [data-arrow] {
 		transform: translateX(2px);
 	}
-
-	.hover-icon-scale:hover [data-icon-scale] {
-		transform: scale(1.04) rotate(-4deg);
-	}
 }
 
-/* Origin-aware mobile popover dropdown */
-.mobile-nav-popover {
-	transform-origin: top center;
+/* Zero-shift subtle opacity entrance for tab stages */
+.stage-fade-enter {
 	opacity: 1;
-	transform: translateY(0) scale(1);
-	transition:
-		opacity 180ms var(--ease-out),
-		transform 200ms var(--ease-out);
+	transition: opacity 160ms var(--ease-out);
 
 	@starting-style {
 		opacity: 0;
-		transform: translateY(-6px) scale(0.96);
+	}
+}
+
+/* Origin-aware mobile popover dropdown (no scale distortion) */
+.mobile-nav-popover {
+	transform-origin: top center;
+	opacity: 1;
+	transform: translateY(0);
+	transition:
+		opacity 160ms var(--ease-out),
+		transform 180ms var(--ease-out);
+
+	@starting-style {
+		opacity: 0;
+		transform: translateY(-4px);
 	}
 }
 
 /* Step caption entrance for scroll-linked How it works overlay */
 .caption-step-enter {
 	opacity: 1;
-	transform: translateY(0) scale(1);
+	transform: translateY(0);
 	transition:
-		opacity 200ms var(--ease-out),
-		transform 220ms var(--ease-out);
+		opacity 180ms var(--ease-out),
+		transform 200ms var(--ease-out);
 
 	@starting-style {
 		opacity: 0;
-		transform: translateY(6px) scale(0.985);
+		transform: translateY(4px);
 	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.caption-step-enter {
+	.caption-step-enter,
+	.mobile-nav-popover {
 		transform: none;
-		transition: opacity 180ms ease;
+		transition: opacity 160ms ease;
 
 		@starting-style {
 			opacity: 0;

@@ -15,13 +15,10 @@ export const FeatureStage = memo(function FeatureStage({ activeId }: FeatureStag
 		<div
 			role="tabpanel"
 			aria-live="polite"
-			className="surface-card flex min-h-84 w-full flex-col justify-between overflow-hidden rounded-[12px] border border-white/10 bg-[#0e1117] p-6 sm:min-h-92 sm:p-8"
+			className="surface-card flex min-h-96 w-full flex-col justify-between overflow-hidden rounded-[12px] border border-white/10 bg-[#0e1117] p-6 sm:p-8"
 		>
 			{activeId === "browser" ? (
-				<div
-					key="browser"
-					className="mobile-nav-popover flex h-full flex-col justify-between gap-8"
-				>
+				<div key="browser" className="stage-fade-enter flex h-full flex-col justify-between gap-8">
 					<div className="flex items-center justify-between gap-2">
 						<span className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground">
 							<Globe className="size-3.5 text-muted-foreground" aria-hidden="true" />
@@ -84,10 +81,7 @@ export const FeatureStage = memo(function FeatureStage({ activeId }: FeatureStag
 			) : null}
 
 			{activeId === "privacy" ? (
-				<div
-					key="privacy"
-					className="mobile-nav-popover flex h-full flex-col justify-between gap-8"
-				>
+				<div key="privacy" className="stage-fade-enter flex h-full flex-col justify-between gap-8">
 					<div className="flex items-center justify-between gap-2">
 						<span className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground">
 							<Lock className="size-3.5 text-muted-foreground" aria-hidden="true" />
@@ -128,10 +122,7 @@ export const FeatureStage = memo(function FeatureStage({ activeId }: FeatureStag
 			) : null}
 
 			{activeId === "portable" ? (
-				<div
-					key="portable"
-					className="mobile-nav-popover flex h-full flex-col justify-between gap-8"
-				>
+				<div key="portable" className="stage-fade-enter flex h-full flex-col justify-between gap-8">
 					<div className="flex items-center justify-between gap-2">
 						<span className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground">
 							<FileDown className="size-3.5 text-muted-foreground" aria-hidden="true" />
@@ -172,10 +163,7 @@ export const FeatureStage = memo(function FeatureStage({ activeId }: FeatureStag
 			) : null}
 
 			{activeId === "recovery" ? (
-				<div
-					key="recovery"
-					className="mobile-nav-popover flex h-full flex-col justify-between gap-8"
-				>
+				<div key="recovery" className="stage-fade-enter flex h-full flex-col justify-between gap-8">
 					<div className="flex items-center justify-between gap-2">
 						<span className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground">
 							<Shield className="size-3.5 text-muted-foreground" aria-hidden="true" />

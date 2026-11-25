@@ -151,7 +151,7 @@ export function PreviewProfileCard({
 						<SelectTrigger
 							id={browserId}
 							aria-label="Browser engine"
-							className="h-8.5 min-w-38 cursor-pointer rounded-[6px] border-[#273042] bg-[#0c0f15] text-xs font-medium text-foreground hover:border-white/25 dark:bg-[#0c0f15] dark:hover:bg-[#101520]"
+							className="h-8.5 w-44 cursor-pointer rounded-[6px] border-[#273042] bg-[#0c0f15] text-xs font-medium text-foreground hover:border-white/25 dark:bg-[#0c0f15] dark:hover:bg-[#101520]"
 						>
 							<SelectValue />
 						</SelectTrigger>
@@ -187,7 +187,7 @@ export function PreviewProfileCard({
 						type="button"
 						onClick={onStartSimulation}
 						disabled={isBusy || stage === "confirm"}
-						className="tactile-press inline-flex h-8.5 cursor-pointer items-center justify-center rounded-[6px] bg-[#2563eb] px-4.5 text-xs font-semibold text-white hover:bg-[#1d4ed8] disabled:cursor-not-allowed disabled:opacity-55 sm:text-[13px]"
+						className="tactile-press inline-flex h-8.5 min-w-44 cursor-pointer items-center justify-center rounded-[6px] bg-[#2563eb] px-4.5 text-xs font-semibold text-white hover:bg-[#1d4ed8] disabled:cursor-not-allowed disabled:opacity-55 sm:text-[13px]"
 					>
 						{stage === "done" ? "Replay Preview" : "Get 1-Year Access Link"}
 					</button>

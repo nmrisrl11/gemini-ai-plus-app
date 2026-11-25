@@ -70,7 +70,7 @@ export function PreviewBanners({
 					<button
 						type="button"
 						onClick={onCopyLink}
-						className="tactile-press inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-[6px] bg-emerald-600 px-3 text-xs font-semibold text-white hover:bg-emerald-500"
+						className="tactile-press inline-flex h-8 min-w-28 cursor-pointer items-center justify-center gap-1.5 rounded-[6px] bg-emerald-600 px-3 text-xs font-semibold text-white hover:bg-emerald-500"
 					>
 						{copiedLink ? (
 							<>

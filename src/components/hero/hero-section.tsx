@@ -38,7 +38,7 @@ export function HeroSection() {
 				<div className="size-32 select-none sm:size-40">
 					<img
 						src="/images/app_icon.png"
-						alt="Gemini AI Plus Portal app icon"
+						alt={`${APP_INFO.name} app icon`}
 						draggable={false}
 						width={160}
 						height={160}
