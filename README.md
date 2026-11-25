@@ -15,6 +15,7 @@ Landing page for **[Google AI Plus Portal](https://github.com/nmrisrl11/gemini-a
 - **3D & Shaders**: Three.js (lazy-loaded rail scene) + WebGL2 (`GradientASCII`)
 - **Styling**: Tailwind CSS v4 (`@tailwindcss/vite`) + shadcn/ui (`radix-nova`)
 - **Fonts**: `@fontsource-variable/geist` & `@fontsource-variable/geist-mono`
+- **Analytics**: Vercel Web Analytics (`@vercel/analytics/react`)
 - **Linting & Formatting**: Oxlint, Oxfmt, and `tailwind-lint`
 
 ## Project Structure

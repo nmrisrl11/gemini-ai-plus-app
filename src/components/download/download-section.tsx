@@ -1,25 +1,49 @@
 import GradientASCII from "@/components/ui/gradient-ascii";
 import { APP_INFO, GRADIENT_ASCII_COLORS } from "@/constants/app-info";
+import { useEffect, useRef, useState } from "react";
 
 export function DownloadSection() {
+	const sectionRef = useRef<HTMLElement>(null);
+	const [shouldMountBg, setShouldMountBg] = useState(false);
+
+	// Defer second WebGL2 context & shader compilation until the user approaches this section
+	useEffect(() => {
+		const el = sectionRef.current;
+		if (!el || shouldMountBg) return undefined;
+		const observer = new IntersectionObserver(
+			(entries) => {
+				if (entries.some((entry) => entry.isIntersecting)) {
+					setShouldMountBg(true);
+					observer.disconnect();
+				}
+			},
+			{ rootMargin: "320px" },
+		);
+		observer.observe(el);
+		return () => observer.disconnect();
+	}, [shouldMountBg]);
+
 	return (
 		<section
+			ref={sectionRef}
 			id="download"
 			aria-labelledby="download-heading"
 			className="section-scroll-fade relative -mb-px flex min-h-dvh w-full items-center justify-center overflow-hidden bg-background px-4 py-24 sm:px-6 sm:py-32"
 		>
-			{/* Rising GradientASCII WebGL2 Backdrop — mirrors the hero to close the page loop */}
+			{/* Rising GradientASCII WebGL2 Backdrop — lazy-mounted to keep initial WebGL startup fast */}
 			<div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
-				<GradientASCII
-					colors={GRADIENT_ASCII_COLORS}
-					shape="rise"
-					characters=" .·•●"
-					mouseInteraction={false}
-					clickEffect="none"
-					fontFamily='"Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace'
-					intro={false}
-					lightMode={false}
-				/>
+				{shouldMountBg ? (
+					<GradientASCII
+						colors={GRADIENT_ASCII_COLORS}
+						shape="rise"
+						characters=" .·•●"
+						mouseInteraction={false}
+						clickEffect="none"
+						fontFamily='"Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace'
+						intro={false}
+						lightMode={false}
+					/>
+				) : null}
 			</div>
 
 			{/* Subtle center readability veil + seamless top & bottom blends */}

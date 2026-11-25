@@ -7,6 +7,7 @@ import { FloatingNavbar } from "@/components/layout/floating-navbar";
 import { Footer } from "@/components/layout/footer";
 import { NotFoundPage } from "@/components/layout/not-found-page";
 import { PreviewSection } from "@/components/preview/preview-section";
+import { Analytics } from "@vercel/analytics/react";
 import { useEffect, useState } from "react";
 
 function isNonExistentPath(): boolean {
@@ -31,7 +32,12 @@ export function App() {
 	};
 
 	if (isNotFound) {
-		return <NotFoundPage onNavigateHome={handleNavigateHome} />;
+		return (
+			<>
+				<NotFoundPage onNavigateHome={handleNavigateHome} />
+				<Analytics />
+			</>
+		);
 	}
 
 	return (
@@ -57,6 +63,7 @@ export function App() {
 			</main>
 
 			<Footer />
+			<Analytics />
 		</div>
 	);
 }
