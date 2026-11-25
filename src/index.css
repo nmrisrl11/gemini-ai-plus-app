@@ -357,3 +357,27 @@
 .surface-card {
 	box-shadow: var(--shadow-card);
 }
+
+/* Scroll-driven Hero Scroll Cue fade out/in (0px to 100px on compositor thread) */
+@media (prefers-reduced-motion: no-preference) {
+	@supports (animation-timeline: scroll(root)) {
+		@keyframes cue-fade-out {
+			from {
+				opacity: 1;
+				transform: translateY(0);
+				pointer-events: auto;
+			}
+			to {
+				opacity: 0;
+				transform: translateY(12px);
+				pointer-events: none;
+			}
+		}
+
+		.hero-scroll-cue {
+			animation: cue-fade-out var(--ease-out) both;
+			animation-timeline: scroll(root);
+			animation-range: 0px 100px;
+		}
+	}
+}

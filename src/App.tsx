@@ -1,14 +1,14 @@
-import { DownloadSection } from "@/components/landing/download-section";
-import { FaqSection } from "@/components/landing/faq-section";
-import { FeaturesSection } from "@/components/landing/features-section";
-import { FloatingNavbar } from "@/components/landing/floating-navbar";
-import { Footer } from "@/components/landing/footer";
-import { HeroSection } from "@/components/landing/hero-section";
-import { InstallSection } from "@/components/landing/install-section";
-import { NotFoundPage } from "@/components/landing/not-found-page";
-import { PreviewSection } from "@/components/landing/preview-section";
-import { SupportSection } from "@/components/landing/support-section";
-import { WorkflowSection } from "@/components/landing/workflow-section";
+import { DownloadSection } from "@/components/download/download-section";
+import { FaqSection } from "@/components/faq/faq-section";
+import { FeaturesSection } from "@/components/features/features-section";
+import { HeroSection } from "@/components/hero/hero-section";
+import { InstallSection } from "@/components/install/install-section";
+import { FloatingNavbar } from "@/components/layout/floating-navbar";
+import { Footer } from "@/components/layout/footer";
+import { NotFoundPage } from "@/components/layout/not-found-page";
+import { PreviewSection } from "@/components/preview/preview-section";
+import { SupportSection } from "@/components/support/support-section";
+import { WorkflowSection } from "@/components/workflow/workflow-section";
 import { useEffect, useState } from "react";
 
 function isNonExistentPath(): boolean {

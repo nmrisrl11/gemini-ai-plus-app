@@ -4,7 +4,7 @@ Official landing page for **[Gemini AI Plus Portal](https://github.com/nmrisrl11
 
 ## Highlights
 
-- **Midnight Sapphire Dark Theme**: Dark-only obsidian palette (`#090c12`) paired with a WebGL2 `Grainient` shader background and self-hosted `Geist` + `Geist Mono` typography.
+- **Midnight Sapphire Dark Theme**: Dark-only obsidian palette (`#090c12`) paired with WebGL2 `GradientASCII` (hero) and `Grainient` (closing CTA) backdrops, scroll-driven `Preview the App` cue, and self-hosted `Geist` + `Geist Mono` typography.
 - **Interactive Desktop Preview**: Live in-browser simulation of the CustomTkinter desktop app—profile randomization, browser selector, 3-step stepper, simulated 6-digit OTP prompt, canonical offer link extraction, and live activity console.
 - **Architecture & Workflow**: Sticky 4-step pipeline cards, asymmetric Bento architecture grid (5-tier Chromium discovery cascade, Nuitka native build, `F12` diagnostics, CDP recovery, zero telemetry), tabbed Quick Start (`Portable .exe`, `From Source`, `Headless CLI`), and accessible `<details>` FAQ.
 - **Tactile Craft**: Custom `--ease-out` (`cubic-bezier(0.23, 1, 0.32, 1)`) motion tokens, press feedback (`scale(0.97)`), pointer-gated hover transforms, and `prefers-reduced-motion` compliance.
@@ -31,20 +31,32 @@ Official landing page for **[Gemini AI Plus Portal](https://github.com/nmrisrl11
     │   └── landing-data.ts      # Structured copy for sections, demo profiles, and FAQs
     └── components/
         ├── icons.tsx            # GitHub and Windows SVG marks
+        ├── download/
+        │   └── download-section.tsx
+        ├── faq/
+        │   └── faq-section.tsx
+        ├── features/
+        │   └── features-section.tsx
+        ├── hero/
+        │   ├── hero-scroll-cue.tsx
+        │   └── hero-section.tsx
+        ├── install/
+        │   └── install-section.tsx
+        ├── layout/
+        │   ├── floating-navbar.tsx
+        │   ├── footer.tsx
+        │   └── not-found-page.tsx
+        ├── preview/
+        │   └── preview-section.tsx
+        ├── support/
+        │   └── support-section.tsx
         ├── ui/
-        │   └── grainient.tsx    # Interactive WebGL2 shader canvas
-        └── landing/
-            ├── floating-navbar.tsx
-            ├── hero-section.tsx
-            ├── preview-section.tsx
-            ├── workflow-section.tsx
-            ├── features-section.tsx
-            ├── install-section.tsx
-            ├── faq-section.tsx
-            ├── support-section.tsx
-            ├── download-section.tsx
-            ├── footer.tsx
-            └── not-found-page.tsx
+        │   ├── button-variants.ts
+        │   ├── button.tsx
+        │   ├── gradient-ascii.tsx
+        │   └── grainient.tsx
+        └── workflow/
+            └── workflow-section.tsx
 ```
 
 ## Development
@@ -56,15 +68,15 @@ npm run dev
 
 ### Scripts
 
-| Command | Description |
-| :--- | :--- |
-| `npm run dev` | Start Vite development server |
-| `npm run build` | Run `oxlint --deny-warnings`, `tsc -b`, and `vite build` |
-| `npm run preview` | Preview the production build locally |
-| `npm run lint` | Run Oxlint across `src/` |
-| `npm run lint:tailwind` | Validate canonical Tailwind CSS classes |
-| `npm run format` | Format repository files with Oxfmt |
-| `npm run format:check` | Check formatting without writing |
+| Command                 | Description                                              |
+| :---------------------- | :------------------------------------------------------- |
+| `npm run dev`           | Start Vite development server                            |
+| `npm run build`         | Run `oxlint --deny-warnings`, `tsc -b`, and `vite build` |
+| `npm run preview`       | Preview the production build locally                     |
+| `npm run lint`          | Run Oxlint across `src/`                                 |
+| `npm run lint:tailwind` | Validate canonical Tailwind CSS classes                  |
+| `npm run format`        | Format repository files with Oxfmt                       |
+| `npm run format:check`  | Check formatting without writing                         |
 
 ## Disclaimer
 
