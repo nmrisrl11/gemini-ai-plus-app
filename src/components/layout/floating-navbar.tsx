@@ -140,6 +140,7 @@ export function FloatingNavbar() {
 								<a
 									key={item.id}
 									href={`#${item.id}`}
+									title={`Jump to ${item.label}`}
 									onClick={(e) => handleNavClick(e, item.id)}
 									aria-current={isActive ? "location" : undefined}
 									className={cn(
@@ -174,6 +175,7 @@ export function FloatingNavbar() {
 						href={APP_INFO.latestReleaseUrl}
 						target="_blank"
 						rel="noreferrer noopener"
+						title="Download Google AI Plus Portal for Windows"
 						className="tactile-pill inline-flex h-7.5 shrink-0 items-center justify-center rounded-full border border-white/60 bg-linear-to-b from-white via-[#fafafa] to-[#e7ecf2] px-3.5 text-[11px] font-semibold text-slate-950 shadow-[0_2px_8px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,1)] hover:opacity-95 sm:h-8 sm:px-4 sm:text-xs"
 					>
 						Download
@@ -193,6 +195,7 @@ export function FloatingNavbar() {
 									<a
 										key={item.id}
 										href={`#${item.id}`}
+										title={`Jump to ${item.label}`}
 										onClick={(e) => handleNavClick(e, item.id)}
 										aria-current={isActive ? "location" : undefined}
 										className={cn(

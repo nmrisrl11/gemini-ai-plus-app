@@ -18,8 +18,8 @@ export function Footer() {
 						<div className="flex items-center gap-2.5">
 							<img
 								src="/images/app_icon.png"
-								alt=""
-								aria-hidden="true"
+								alt="Google AI Plus Portal icon"
+								title="Google AI Plus Portal"
 								width={32}
 								height={32}
 								loading="lazy"
@@ -40,22 +40,32 @@ export function Footer() {
 						<div className="flex flex-col gap-4">
 							<span className="text-xs font-semibold text-foreground">Portal</span>
 							<div className="flex flex-col gap-2.5 text-xs">
-								<a href="#preview" className="transition-colors duration-150 hover:text-foreground">
+								<a
+									href="#preview"
+									title="Jump to Interactive Preview"
+									className="transition-colors duration-150 hover:text-foreground"
+								>
 									Preview
 								</a>
 								<a
 									href="#how-it-works"
+									title="Jump to How it works"
 									className="transition-colors duration-150 hover:text-foreground"
 								>
 									How it works
 								</a>
 								<a
 									href="#features"
+									title="Jump to Features"
 									className="transition-colors duration-150 hover:text-foreground"
 								>
 									Features
 								</a>
-								<a href="#faq" className="transition-colors duration-150 hover:text-foreground">
+								<a
+									href="#faq"
+									title="Jump to Frequently Asked Questions"
+									className="transition-colors duration-150 hover:text-foreground"
+								>
 									FAQ
 								</a>
 							</div>
@@ -68,6 +78,7 @@ export function Footer() {
 									href={APP_INFO.latestReleaseUrl}
 									target="_blank"
 									rel="noreferrer noopener"
+									title="Download Google AI Plus Portal for Windows"
 									className="transition-colors duration-150 hover:text-foreground"
 								>
 									Download for Windows
@@ -76,6 +87,7 @@ export function Footer() {
 									href={APP_INFO.githubUrl}
 									target="_blank"
 									rel="noreferrer noopener"
+									title="View Google AI Plus Portal on GitHub"
 									className="transition-colors duration-150 hover:text-foreground"
 								>
 									GitHub Repository
@@ -84,6 +96,7 @@ export function Footer() {
 									href={APP_INFO.githubReleasesUrl}
 									target="_blank"
 									rel="noreferrer noopener"
+									title="Browse all releases on GitHub"
 									className="transition-colors duration-150 hover:text-foreground"
 								>
 									All Releases
@@ -92,6 +105,7 @@ export function Footer() {
 									href={APP_INFO.licenseUrl}
 									target="_blank"
 									rel="noreferrer noopener"
+									title="Read the MIT License"
 									className="transition-colors duration-150 hover:text-foreground"
 								>
 									MIT License

@@ -61,6 +61,7 @@ export function NotFoundPage({ onNavigateHome }: NotFoundPageProps) {
 						href={APP_INFO.githubUrl}
 						target="_blank"
 						rel="noreferrer noopener"
+						title="View Google AI Plus Portal on GitHub"
 						className="hover-arrow-shift inline-flex items-center gap-1.5 text-xs font-medium text-white/65 transition-colors duration-150 hover:text-white sm:text-[13px]"
 					>
 						<span>Open source on GitHub</span>

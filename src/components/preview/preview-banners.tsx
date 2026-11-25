@@ -88,6 +88,7 @@ export function PreviewBanners({
 						href={APP_INFO.latestReleaseUrl}
 						target="_blank"
 						rel="noreferrer noopener"
+						title="Download Google AI Plus Portal desktop app"
 						className="tactile-press inline-flex h-8 items-center gap-1.5 rounded-[6px] border border-emerald-500/30 bg-[#091711] px-3 text-xs font-medium text-emerald-200 hover:bg-emerald-500/15"
 					>
 						<span>Get Desktop App</span>

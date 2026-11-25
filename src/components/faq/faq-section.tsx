@@ -110,6 +110,7 @@ export function FaqSection() {
 							href={APP_INFO.githubDiscussionsUrl}
 							target="_blank"
 							rel="noreferrer noopener"
+							title="Ask a question in GitHub Discussions"
 							className="hover-arrow-shift tactile-press inline-flex items-center gap-1 font-medium text-foreground/85 transition-colors duration-150 hover:text-foreground"
 						>
 							<span>Ask in Discussions</span>
@@ -124,6 +125,7 @@ export function FaqSection() {
 							href={APP_INFO.githubIssuesUrl}
 							target="_blank"
 							rel="noreferrer noopener"
+							title="Report an issue on GitHub"
 							className="hover-arrow-shift tactile-press inline-flex items-center gap-1 font-medium text-foreground/85 transition-colors duration-150 hover:text-foreground"
 						>
 							<span>Report an issue</span>

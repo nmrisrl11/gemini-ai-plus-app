@@ -22,7 +22,11 @@ Landing page for **[Google AI Plus Portal](https://github.com/nmrisrl11/gemini-a
 ```text
 ├── public/
 │   ├── favicon.ico
-│   ├── site.webmanifest
+│   ├── llms.txt                 # Machine-readable LLM discovery index
+│   ├── llms-full.txt            # Complete single-file technical & user guide
+│   ├── robots.txt               # Search & AI crawler directives
+│   ├── site.webmanifest         # Web app & mobile bookmark manifest
+│   ├── sitemap.xml              # Canonical XML sitemap
 │   └── images/                  # App icons and OG preview
 └── src/
     ├── App.tsx                  # Page layout, skip link, and 404 route fallback
@@ -85,6 +89,14 @@ npm run dev
 | `npm run lint:tailwind` | Validate canonical Tailwind CSS classes                  |
 | `npm run format`        | Format repository files with Oxfmt                       |
 | `npm run format:check`  | Check formatting without writing                         |
+
+## Support Development
+
+If this project saved you time, you can support ongoing open-source maintenance:
+
+- **Buy Me a Coffee**: [buymeacoffee.com/nmrisrl11](https://buymeacoffee.com/nmrisrl11)
+- **GitHub**: Star [gemini-ai-plus-portal](https://github.com/nmrisrl11/gemini-ai-plus-portal) or join [Community Discussions](https://github.com/nmrisrl11/gemini-ai-plus-portal/discussions)
+- **Developer**: [nmrisrl.dev](https://www.nmrisrl.dev)
 
 ## Disclaimer
 

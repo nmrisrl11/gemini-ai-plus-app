@@ -40,8 +40,8 @@ export function DownloadSection() {
 				<div className="size-28 select-none sm:size-34">
 					<img
 						src="/images/app_icon.png"
-						alt=""
-						aria-hidden="true"
+						alt="Google AI Plus Portal app icon"
+						title="Google AI Plus Portal"
 						draggable={false}
 						width={136}
 						height={136}
@@ -67,6 +67,7 @@ export function DownloadSection() {
 						href={APP_INFO.latestReleaseUrl}
 						target="_blank"
 						rel="noreferrer noopener"
+						title="Download Google AI Plus Portal for Windows"
 						className="tactile-pill inline-flex cursor-pointer items-center justify-center rounded-full border border-white/60 bg-linear-to-b from-white via-[#fafafa] to-[#e8e8e8] px-10 py-4 text-[16px] font-semibold text-neutral-900 shadow-[0_12px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,1)] hover:from-white hover:to-[#f2f2f2] sm:px-11 sm:py-4.5 sm:text-[17px]"
 					>
 						Download for Windows

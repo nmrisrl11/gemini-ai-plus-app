@@ -37,8 +37,8 @@ export function PreviewSection() {
 						<div className="flex items-center gap-2">
 							<img
 								src="/images/app_icon.png"
-								alt=""
-								aria-hidden="true"
+								alt="Google AI Plus Portal icon"
+								title="Google AI Plus Portal"
 								width={18}
 								height={18}
 								className="size-4.5 shrink-0 object-contain"
@@ -56,6 +56,7 @@ export function PreviewSection() {
 								href={APP_INFO.githubUrl}
 								target="_blank"
 								rel="noreferrer noopener"
+								title="About Google AI Plus Portal on GitHub"
 								className="transition-colors duration-150 hover:text-foreground"
 							>
 								About
@@ -107,6 +108,7 @@ export function PreviewSection() {
 								href={APP_INFO.githubUrl}
 								target="_blank"
 								rel="noreferrer noopener"
+								title="About Google AI Plus Portal on GitHub"
 								className="transition-colors duration-150 hover:text-foreground"
 							>
 								GitHub
@@ -116,6 +118,7 @@ export function PreviewSection() {
 								href={APP_INFO.bmcUrl}
 								target="_blank"
 								rel="noreferrer noopener"
+								title="Support development on Buy Me a Coffee"
 								className="transition-colors duration-150 hover:text-foreground"
 							>
 								Buy Me a Coffee

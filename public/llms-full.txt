@@ -1,0 +1,75 @@
+# Google AI Plus Portal — Complete Technical & User Guide
+
+> Version: 1.0.0
+> Web Portal: https://gemini-ai-plus-portal.vercel.app/
+> Desktop Repository: https://github.com/nmrisrl11/gemini-ai-plus-portal
+> Web Repository: https://github.com/nmrisrl11/gemini-ai-plus-app
+> License: MIT
+
+---
+
+## 1. Executive Summary
+
+Google AI Plus Portal is an independent, open-source Windows 10/11 desktop utility designed to streamline 12-month Google AI Plus promotional onboarding and resolve your direct Google One offer link locally.
+
+The companion web portal (`https://gemini-ai-plus-portal.vercel.app/`) is built with React 19, TypeScript, Vite 8, Tailwind CSS v4, and Three.js. It provides a read-only interactive UI preview using RFC 2606 sample data (`@example.com`), a four-step 3D scroll walkthrough, a feature spotlight, and a topic-filtered FAQ—without collecting or transmitting any user information.
+
+---
+
+## 2. Included Google AI Plus Plan Benefits
+
+The 12-month Google AI Plus promotional tier includes:
+
+- **Gemini app**: Double usage limits plus Hydrogen model access.
+- **400 GB cloud storage**: Shared across Google Photos, Drive, and Gmail.
+- **Google Flow & Music**: Expanded AI creative and music studio access.
+- **Search, Gmail & Notebook**: Nano Banana in Search, Gmail AI, and Audio Overviews.
+
+---
+
+## 3. Four-Step Local Workflow
+
+1. **01 · Setup**: Generate ready-to-use profile details in one click inside the Windows desktop app, or enter your own.
+2. **02 · Browser**: Connects directly to an existing Chromium browser already installed on your PC (Google Chrome, Microsoft Edge, Brave, Opera, or Vivaldi) with zero extra browser downloads.
+3. **03 · Confirm**: Pauses automatically whenever an email confirmation step or human security check appears so you can complete it safely in your browser before automation resumes.
+4. **04 · Ready**: Captures your direct Google One offer link and saves a local backup copy in the `results/` folder next to the app.
+
+---
+
+## 4. Key Engineering & UX Highlights
+
+- **Works with your existing browser**: Automatically detects Chrome, Windows Edge, Brave, Opera, or Vivaldi, avoiding ~420 MB bundled browser downloads.
+- **Private by default**: Everything runs on your Windows PC—no sign-ups, no tracking, no remote backend, and no telemetry.
+- **Single portable Windows file**: Lightweight (~43 MB) standalone build compiled via GitHub Actions with published checksums and automated VirusTotal scan reports on every release.
+- **Safe pauses & recovery**: Pauses cleanly for security checks, includes an `F12` in-app simulation/diagnostics mode, and offers a recovery helper if a run is interrupted halfway.
+
+---
+
+## 5. Frequently Asked Questions
+
+### Q1: Does the app send my details to any server?
+Never. Everything runs directly on your Windows PC with no accounts, tracking, or remote servers. Your details and offer links stay in a local folder right next to the app.
+
+### Q2: Do I need to install anything else first?
+No. Just download the single Windows file and double-click to open. It works with Chrome, Edge, or Brave already on your computer, so there are no extra browsers or runtimes to install.
+
+### Q3: Why does Google One show a billing step?
+Google One requires a billing profile on file during promotional checkout on Google One. The 12-month promotional period is $0.00 today, and auto-renewal can be turned off anytime in your Google One settings.
+
+### Q4: What if a security check or CAPTCHA pops up?
+The app pauses automatically and lets you complete the check yourself in the browser window before continuing, keeping your account safe from lockouts.
+
+### Q5: What if something gets interrupted halfway?
+You don't have to start over. If your connection drops or a window closes mid-way, the built-in recovery helper can reconnect to your browser and finish grabbing your link.
+
+### Q6: How do I know the download is safe?
+Every release is open source and built automatically from public code on GitHub, complete with an independent VirusTotal scan and file checksum so you can verify it yourself.
+
+---
+
+## 6. Security, Privacy & Compliance Disclosures
+
+- **100% Local**: No remote API servers, cloud relays, or analytics.
+- **Read-Only Web Preview**: The web landing page contains zero `<input>` or `<form>` elements and uses strictly synthetic `@example.com` sample data.
+- **Open Source**: Licensed under the MIT License.
+- **Trademark Disclaimer**: Google, Google One, Google AI Plus, and Gemini are trademarks of Google LLC. Google AI Plus Portal is an independent open-source utility and is not affiliated with, sponsored by, or endorsed by Google LLC, Alphabet Inc., or Internshala.
