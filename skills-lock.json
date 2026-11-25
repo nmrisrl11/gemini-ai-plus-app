@@ -1,0 +1,54 @@
+{
+	"version": 2,
+	"skills": {
+		"emil-design-eng": {
+			"source": "emilkowalski/skills",
+			"commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+			"sourceType": "github",
+			"skillPath": "skills/emil-design-eng/SKILL.md",
+			"computedHash": "e1b377ccde1d32743d1d3f7d8626629deb8055c9114d180c184697928cc66cc6"
+		},
+		"frontend-a11y": {
+			"source": "affaan-m/ECC",
+			"commit": "4adeee6732a12d1540f49a4d50a38ce8c97f9a53",
+			"sourceType": "github",
+			"skillPath": "skills/frontend-a11y/SKILL.md",
+			"computedHash": "a75b4ef44b6b14f0eef8e48238f6e8e15c44cf3d329bf517e6bbc471de74efd2"
+		},
+		"frontend-design": {
+			"source": "anthropics/skills",
+			"commit": "e4bb5d960d87126ff3b3a8af1a104b7db67560ba",
+			"sourceType": "github",
+			"skillPath": "skills/frontend-design/SKILL.md",
+			"computedHash": "83485963700bcf11d5bf78118facb301676b69d918fee2e45a95e7f1a2840f6c"
+		},
+		"shadcn": {
+			"source": "shadcn-ui/ui",
+			"commit": "055aa6b7837b1808456a24beb4c97a677864aa82",
+			"sourceType": "github",
+			"skillPath": "skills/shadcn/SKILL.md",
+			"computedHash": "388962d16c7a4f13aaeee0d8f128e50a87df8553d42ef7988c39c0e1c74a40e8"
+		},
+		"vercel-react-best-practices": {
+			"source": "vercel-labs/agent-skills",
+			"commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb",
+			"sourceType": "github",
+			"skillPath": "skills/react-best-practices/SKILL.md",
+			"computedHash": "7991ed4fbecdac23f47c1a40c243e00a212a9e7f3604db93959b3ae11dffe299"
+		},
+		"vite": {
+			"source": "antfu/skills",
+			"commit": "4a6bb39e7b45e26402eb215393c51ccf5df1ca4c",
+			"sourceType": "github",
+			"skillPath": "skills/vite/SKILL.md",
+			"computedHash": "db9eea82d8bf6ce0f60a4a1d94a626c718df7d97160b5f1d5b150647e0c401b3"
+		},
+		"web-design-guidelines": {
+			"source": "vercel-labs/agent-skills",
+			"commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb",
+			"sourceType": "github",
+			"skillPath": "skills/web-design-guidelines/SKILL.md",
+			"computedHash": "5994e4cfd86144903d2ba750f862b9e36af15e3297aac983679e347b99f6cb71"
+		}
+	}
+}
