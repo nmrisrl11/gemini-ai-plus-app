@@ -13,7 +13,7 @@ export interface LogEntry {
 export const SAMPLE_OUTPUT_URL = "https://example.com/offer/sample-preview-link";
 
 const READY_LINES: readonly LogEntry[] = [
-	{ id: 1, text: "Ready to preview the Gemini AI Plus Portal desktop workflow." },
+	{ id: 1, text: "Ready to preview the Google AI Plus Portal desktop workflow." },
 	{ id: 2, text: "" },
 	{ id: 3, text: '  1. Review the sample profile or click "Randomize" above.' },
 	{ id: 4, text: '  2. (Optional) Click "Customize" to inspect generated sample fields.' },

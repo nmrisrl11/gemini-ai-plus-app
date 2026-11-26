@@ -1,6 +1,7 @@
 import { StepCaptionOverlay } from "@/components/how-it-works/step-caption-overlay";
 import { StepProgressRail } from "@/components/how-it-works/step-progress-rail";
 import { HOW_IT_WORKS_STEPS } from "@/constants/landing-data";
+import { cn } from "@/lib/utils";
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
 
 const RailSceneCanvas = lazy(() => import("@/components/how-it-works/rail-scene-canvas"));
@@ -102,7 +103,10 @@ export function HowItWorksSection() {
 		<section
 			id="how-it-works"
 			aria-labelledby="how-it-works-heading"
-			className="sticky-section-scroll-fade relative min-h-dvh scroll-mt-4 pt-20 pb-8 sm:scroll-mt-6 sm:pt-24 sm:pb-12"
+			className={cn(
+				"sticky-section-scroll-fade relative min-h-dvh scroll-mt-4 pt-20 sm:scroll-mt-6 sm:pt-24",
+				reducedMotion ? "pb-20 sm:pb-24" : "pb-8 sm:pb-12",
+			)}
 		>
 			{/* Section Header */}
 			<div className="mx-auto max-w-xl px-4 text-center sm:px-6">
@@ -115,18 +119,34 @@ export function HowItWorksSection() {
 				<p className="mx-auto mt-3.5 max-w-xl text-base leading-relaxed text-balance text-muted-foreground sm:text-lg">
 					Four simple steps on your PC, from quick setup to your direct Google One offer link.
 				</p>
+
+				{/* Centered step selector in reduced-motion mode so it never overlaps the navbar or 3D cards */}
+				{reducedMotion ? (
+					<div className="mt-7 flex justify-center">
+						<StepProgressRail
+							steps={HOW_IT_WORKS_STEPS}
+							activeIndex={activeStep}
+							onSelectStep={handleSelectStep}
+						/>
+					</div>
+				) : null}
 			</div>
 
-			{/* Full-bleed continuous native-scroll 3D rail track */}
+			{/* Full-bleed 3D rail track (self-contained height in reduced-motion mode so it never overflows into Features) */}
 			<div
 				ref={trackRef}
 				className={
 					reducedMotion
-						? "relative mt-6 h-[min(78dvh,640px)] w-full"
+						? "relative mt-6 h-[min(68dvh,560px)] w-full overflow-hidden sm:h-[min(74dvh,620px)]"
 						: "relative mt-6 h-[270vh] w-full sm:h-[300vh]"
 				}
 			>
-				<div className="sticky top-0 h-dvh w-full overflow-hidden bg-background">
+				<div
+					className={cn(
+						"w-full overflow-hidden bg-background",
+						reducedMotion ? "relative h-full" : "sticky top-0 h-dvh",
+					)}
+				>
 					{/* Seamless atmospheric glow + top/bottom edge blends into the page */}
 					<div
 						aria-hidden="true"
@@ -134,11 +154,11 @@ export function HowItWorksSection() {
 					/>
 					<div
 						aria-hidden="true"
-						className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-linear-to-b from-background to-transparent"
+						className="pointer-events-none absolute inset-x-0 top-0 z-10 h-20 bg-linear-to-b from-background to-transparent sm:h-24"
 					/>
 					<div
 						aria-hidden="true"
-						className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-28 bg-linear-to-t from-background to-transparent"
+						className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-linear-to-t from-background to-transparent sm:h-28"
 					/>
 
 					{/* Lazy-loaded Three.js Camera-on-a-Rail Scene */}
@@ -146,15 +166,6 @@ export function HowItWorksSection() {
 						<Suspense fallback={null}>
 							<RailSceneCanvas progressRef={progressRef} reducedMotion={reducedMotion} />
 						</Suspense>
-					) : null}
-
-					{/* Step jump buttons shown only for reduced-motion fallback */}
-					{reducedMotion ? (
-						<StepProgressRail
-							steps={HOW_IT_WORKS_STEPS}
-							activeIndex={activeStep}
-							onSelectStep={handleSelectStep}
-						/>
 					) : null}
 
 					{/* Active Step Editorial Caption */}

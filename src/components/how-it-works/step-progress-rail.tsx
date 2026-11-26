@@ -14,36 +14,32 @@ export const StepProgressRail = memo(function StepProgressRail({
 	onSelectStep,
 }: StepProgressRailProps) {
 	return (
-		<div className="pointer-events-none absolute inset-x-4 top-20 z-20 sm:inset-x-6 sm:top-24">
-			<div className="mx-auto flex max-w-6xl justify-end">
-				<div
-					role="tablist"
-					aria-label="Pipeline steps"
-					className="pointer-events-auto flex items-center gap-1 rounded-[8px] border border-white/10 bg-[#090c12]/80 p-1 backdrop-blur-xl"
-				>
-					{steps.map((step, idx) => {
-						const isActive = idx === activeIndex;
-						return (
-							<button
-								key={step.id}
-								role="tab"
-								type="button"
-								aria-selected={isActive}
-								aria-label={`Jump to step ${step.step}: ${step.title}`}
-								onClick={() => onSelectStep(idx)}
-								className={cn(
-									"tactile-press cursor-pointer rounded-[6px] px-2.5 py-1 font-mono text-[11px] font-medium",
-									isActive
-										? "bg-white/12 text-foreground"
-										: "text-muted-foreground hover:bg-white/6 hover:text-foreground",
-								)}
-							>
-								{step.step}
-							</button>
-						);
-					})}
-				</div>
-			</div>
+		<div
+			role="tablist"
+			aria-label="Pipeline steps"
+			className="inline-flex items-center gap-1 rounded-[10px] border border-white/10 bg-[#0e1117] p-1"
+		>
+			{steps.map((step, idx) => {
+				const isActive = idx === activeIndex;
+				return (
+					<button
+						key={step.id}
+						role="tab"
+						type="button"
+						aria-selected={isActive}
+						aria-label={`Jump to step ${step.step}: ${step.title}`}
+						onClick={() => onSelectStep(idx)}
+						className={cn(
+							"tactile-press cursor-pointer rounded-[7px] px-3 py-1.5 font-mono text-xs font-medium",
+							isActive
+								? "bg-white/12 text-foreground"
+								: "text-muted-foreground hover:bg-white/6 hover:text-foreground",
+						)}
+					>
+						{step.step}
+					</button>
+				);
+			})}
 		</div>
 	);
 });

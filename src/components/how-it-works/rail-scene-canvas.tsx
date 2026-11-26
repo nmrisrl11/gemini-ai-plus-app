@@ -157,12 +157,14 @@ export default function RailSceneCanvas({ progressRef, reducedMotion }: RailScen
 			});
 		}
 
-		// Responsive card placement so mobile viewports never clip cards
-		const layoutCards = (viewportWidth: number) => {
-			const isCompact = viewportWidth < 640;
-			const lateralOffset = isCompact ? 0.58 : 1.08;
-			const yLift = isCompact ? 0.28 : 0.14;
-			camera.fov = isCompact ? 54 : 44;
+		// Responsive card placement & scale so portrait mobile viewports never clip cards
+		let compactMode = false;
+		const layoutCards = (viewportWidth: number, viewportHeight: number) => {
+			const aspect = viewportWidth / Math.max(1, viewportHeight);
+			compactMode = viewportWidth < 640 || aspect < 0.85;
+			const lateralOffset = compactMode ? 0.08 : 1.08;
+			const yLift = compactMode ? 0.36 : 0.14;
+			camera.fov = compactMode ? 62 : 44;
 
 			for (const c of cards) {
 				curve.getPointAt(c.u, P);
@@ -183,7 +185,7 @@ export default function RailSceneCanvas({ progressRef, reducedMotion }: RailScen
 			const height = host.clientHeight || 1;
 			renderer.setSize(width, height, false);
 			camera.aspect = width / height;
-			layoutCards(width);
+			layoutCards(width, height);
 			camera.updateProjectionMatrix();
 		};
 
@@ -215,9 +217,10 @@ export default function RailSceneCanvas({ progressRef, reducedMotion }: RailScen
 			camera.lookAt(lookTarget.x, lookTarget.y + 0.08, lookTarget.z);
 
 			const activeIdx = progress * (STEP_COUNT - 1);
+			const baseScale = compactMode ? 0.78 : 1;
 			for (const c of cards) {
 				const focus = 1 - smoothstep(0.08, 0.72, Math.abs(activeIdx - c.idx));
-				c.mesh.scale.setScalar(1 + 0.18 * focus);
+				c.mesh.scale.setScalar(baseScale * (1 + 0.16 * focus));
 				c.mesh.position.y = reducedMotion
 					? c.baseY
 					: c.baseY + Math.sin(seconds * 1.15 + c.idx) * 0.04;

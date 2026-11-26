@@ -14,7 +14,7 @@ export const StepCaptionOverlay = memo(function StepCaptionOverlay({
 	totalSteps,
 }: StepCaptionOverlayProps) {
 	return (
-		<div className="pointer-events-none absolute inset-x-4 bottom-8 z-20 sm:inset-x-6 sm:bottom-12">
+		<div className="pointer-events-none absolute inset-x-4 bottom-4 z-20 sm:inset-x-6 sm:bottom-10">
 			<div className="mx-auto max-w-6xl">
 				<div
 					key={step.id}
