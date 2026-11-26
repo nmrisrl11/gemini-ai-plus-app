@@ -13,6 +13,7 @@ export const FeatureStage = memo(function FeatureStage({ activeId }: FeatureStag
 
 	return (
 		<div
+			id="feature-stage-panel"
 			role="tabpanel"
 			aria-live="polite"
 			className="surface-card flex min-h-96 w-full flex-col justify-between overflow-hidden rounded-[12px] border border-white/10 bg-[#0e1117] p-6 sm:p-8"
@@ -106,7 +107,7 @@ export const FeatureStage = memo(function FeatureStage({ activeId }: FeatureStag
 								<span className="text-sm font-medium text-muted-foreground">
 									Third-party servers &amp; tracking
 								</span>
-								<span className="text-xs text-muted-foreground/75">
+								<span className="text-xs text-muted-foreground">
 									No accounts, no analytics, and no data sent to us.
 								</span>
 							</div>

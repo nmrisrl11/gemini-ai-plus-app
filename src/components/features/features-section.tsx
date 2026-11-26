@@ -59,6 +59,7 @@ export function FeaturesSection() {
 									role="tab"
 									type="button"
 									aria-selected={isActive}
+									aria-controls="feature-stage-panel"
 									onClick={() => setActiveId(item.id)}
 									className={cn(
 										"tactile-press group relative flex w-full cursor-pointer flex-col gap-1.5 py-5 pl-4 text-left",
@@ -75,12 +76,7 @@ export function FeaturesSection() {
 										)}
 									/>
 									<span className="text-base font-semibold tracking-tight">{item.title}</span>
-									<span
-										className={cn(
-											"text-xs leading-relaxed transition-colors duration-150 sm:text-[13px]",
-											isActive ? "text-muted-foreground" : "text-muted-foreground/70",
-										)}
-									>
+									<span className="text-xs leading-relaxed text-muted-foreground sm:text-[13px]">
 										{item.description}
 									</span>
 								</button>

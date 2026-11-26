@@ -34,9 +34,6 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-# Host
-Host: https://gemini-ai-plus-portal.vercel.app
-
 # Sitemaps
 Sitemap: https://gemini-ai-plus-portal.vercel.app/sitemap.xml
 

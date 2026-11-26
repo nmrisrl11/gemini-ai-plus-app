@@ -36,7 +36,7 @@ export function PreviewSection() {
 					<div className="flex items-center justify-between border-b border-[#1e2430] bg-[#0e1117] px-4 py-2.5">
 						<div className="flex items-center gap-2">
 							<img
-								src="/icons/512.webp"
+								src="/icons/64.webp"
 								alt="Google AI Plus Portal icon"
 								title="Google AI Plus Portal"
 								width={18}
@@ -100,7 +100,7 @@ export function PreviewSection() {
 					</div>
 
 					{/* Desktop Window Bottom Status Bar */}
-					<div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#1e2430] bg-[#0e1117] px-4 py-2 text-[11px] text-muted-foreground/75">
+					<div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#1e2430] bg-[#0e1117] px-4 py-2 text-[11px] text-muted-foreground">
 						<div className="flex flex-wrap items-center gap-x-2 gap-y-1">
 							<span>Developed by @nmrisrl11</span>
 							<span aria-hidden="true">·</span>

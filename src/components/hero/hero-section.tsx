@@ -2,8 +2,22 @@ import { HeroScrollCue } from "@/components/hero/hero-scroll-cue";
 import GradientASCII from "@/components/ui/gradient-ascii";
 import { APP_INFO, GRADIENT_ASCII_COLORS } from "@/constants/app-info";
 import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export function HeroSection() {
+	const [shouldMountBg, setShouldMountBg] = useState(false);
+
+	// Defer WebGL2 shader compilation until after initial paint to minimize Total Blocking Time
+	useEffect(() => {
+		if (typeof window === "undefined") return undefined;
+		if ("requestIdleCallback" in window) {
+			const id = window.requestIdleCallback(() => setShouldMountBg(true), { timeout: 250 });
+			return () => window.cancelIdleCallback(id);
+		}
+		const timer = globalThis.setTimeout(() => setShouldMountBg(true), 120);
+		return () => globalThis.clearTimeout(timer);
+	}, []);
+
 	return (
 		<section
 			id="hero"
@@ -11,16 +25,18 @@ export function HeroSection() {
 		>
 			{/* GradientASCII WebGL2 Backdrop */}
 			<div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
-				<GradientASCII
-					colors={GRADIENT_ASCII_COLORS}
-					shape="horizon"
-					characters=" .·•●"
-					mouseInteraction={false}
-					clickEffect="none"
-					fontFamily='"Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace'
-					intro={true}
-					lightMode={false}
-				/>
+				{shouldMountBg ? (
+					<GradientASCII
+						colors={GRADIENT_ASCII_COLORS}
+						shape="horizon"
+						characters=" .·•●"
+						mouseInteraction={false}
+						clickEffect="none"
+						fontFamily='"Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace'
+						intro={true}
+						lightMode={false}
+					/>
+				) : null}
 			</div>
 
 			{/* Subtle center readability veil + seamless bottom blend */}
@@ -37,7 +53,8 @@ export function HeroSection() {
 			<div className="relative z-10 my-auto flex w-full max-w-4xl flex-col items-center text-center">
 				<div className="size-32 select-none sm:size-40">
 					<img
-						src="/icons/512.webp"
+						src="/icons/320.webp"
+						srcSet="/icons/160.webp 1x, /icons/320.webp 2x"
 						alt={`${APP_INFO.name} app icon`}
 						title={APP_INFO.name}
 						draggable={false}
@@ -52,7 +69,7 @@ export function HeroSection() {
 					{APP_INFO.name}
 				</h1>
 
-				<p className="mt-5 max-w-lg text-base leading-relaxed text-white/84 sm:text-lg">
+				<p className="mt-5 max-w-lg text-base leading-relaxed text-white/86 sm:text-lg">
 					An open-source Windows utility that automates 12-month Google AI Plus onboarding and
 					extracts your direct Google One offer link locally.
 				</p>
@@ -73,7 +90,7 @@ export function HeroSection() {
 						target="_blank"
 						rel="noreferrer noopener"
 						title="View Google AI Plus Portal source code on GitHub"
-						className="hover-arrow-shift mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-white/55 transition-colors duration-150 hover:text-white/90 sm:text-[13px]"
+						className="hover-arrow-shift mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-white/78 transition-colors duration-150 hover:text-white sm:text-[13px]"
 					>
 						<span>Open source on GitHub</span>
 						<ArrowRight

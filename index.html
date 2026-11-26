@@ -48,10 +48,13 @@
 
 		<!-- Mobile & Web Application Capability -->
 		<meta name="application-name" content="Google AI Plus Portal" />
+		<meta name="mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-title" content="Google AI Plus Portal" />
-		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<meta name="format-detection" content="telephone=no" />
+
+		<!-- Preload Hero LCP icon for immediate discovery -->
+		<link rel="preload" as="image" type="image/webp" href="/icons/320.webp" fetchpriority="high" />
 
 		<!-- Icons & Manifest -->
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />

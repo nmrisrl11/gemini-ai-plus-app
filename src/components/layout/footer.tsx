@@ -17,7 +17,7 @@ export function Footer() {
 					<div className="flex max-w-md flex-col gap-3.5">
 						<div className="flex items-center gap-2.5">
 							<img
-								src="/icons/512.webp"
+								src="/icons/64.webp"
 								alt="Google AI Plus Portal icon"
 								title="Google AI Plus Portal"
 								width={32}
@@ -129,7 +129,7 @@ export function Footer() {
 									Internshala.
 								</span>
 							</div>
-							<span className="text-[10px] text-muted-foreground/65">
+							<span className="text-[10px] text-muted-foreground/85">
 								Google, Google One, Google AI Plus, and Gemini are trademarks of Google LLC.
 							</span>
 						</div>

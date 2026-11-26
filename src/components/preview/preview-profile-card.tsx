@@ -69,9 +69,7 @@ export function PreviewProfileCard({
 					>
 						{profile.sampleEmail}
 					</span>
-					<span className="shrink-0 font-mono text-[10px] text-muted-foreground/75">
-						sample data
-					</span>
+					<span className="shrink-0 font-mono text-[10px] text-muted-foreground">sample data</span>
 				</div>
 			</div>
 

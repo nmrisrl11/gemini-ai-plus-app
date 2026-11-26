@@ -50,7 +50,7 @@ export function PreviewConsole({
 					<div key={entry.id} className="flex items-start gap-2.5">
 						{entry.time && entry.tag ? (
 							<>
-								<span className="shrink-0 text-slate-600">{entry.time}</span>
+								<span className="shrink-0 text-slate-400">{entry.time}</span>
 								<span className={cn("shrink-0 font-semibold", LOG_TAG_COLORS[entry.tag])}>
 									[{entry.tag}]
 								</span>
