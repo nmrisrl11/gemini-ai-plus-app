@@ -6,7 +6,9 @@ import { HowItWorksSection } from "@/components/how-it-works/how-it-works-sectio
 import { FloatingNavbar } from "@/components/layout/floating-navbar";
 import { Footer } from "@/components/layout/footer";
 import { NotFoundPage } from "@/components/layout/not-found-page";
+import { ServiceStatusBanner } from "@/components/layout/service-status-banner";
 import { PreviewSection } from "@/components/preview/preview-section";
+import { useServiceStatus } from "@/hooks/use-service-status";
 import { Analytics } from "@vercel/analytics/react";
 import { useEffect, useState } from "react";
 
@@ -17,6 +19,7 @@ function isNonExistentPath(): boolean {
 
 export function App() {
 	const [isNotFound, setIsNotFound] = useState(isNonExistentPath);
+	const serviceStatus = useServiceStatus();
 
 	useEffect(() => {
 		const handleLocationChange = () => {
@@ -51,15 +54,23 @@ export function App() {
 				Skip to main content
 			</a>
 
-			<FloatingNavbar />
+			<FloatingNavbar isPaused={serviceStatus.isPaused} isRevealed={serviceStatus.isRevealed} />
+
+			<ServiceStatusBanner
+				payload={serviceStatus.payload}
+				effectiveStatus={serviceStatus.effectiveStatus}
+				isRevealed={serviceStatus.isRevealed}
+				isRefreshing={serviceStatus.isRefreshing}
+				onRefresh={serviceStatus.refreshStatus}
+			/>
 
 			<main id="main-content" tabIndex={-1} className="outline-none">
-				<HeroSection />
+				<HeroSection isPaused={serviceStatus.isPaused} isRevealed={serviceStatus.isRevealed} />
 				<PreviewSection />
 				<HowItWorksSection />
 				<FeaturesSection />
 				<FaqSection />
-				<DownloadSection />
+				<DownloadSection isPaused={serviceStatus.isPaused} isRevealed={serviceStatus.isRevealed} />
 			</main>
 
 			<Footer />

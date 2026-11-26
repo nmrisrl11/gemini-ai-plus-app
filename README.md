@@ -8,6 +8,7 @@ Landing page for **[Google AI Plus Portal](https://github.com/nmrisrl11/gemini-a
 - **Interactive Desktop Preview**: Phishing-safe, read-only UI simulation of the CustomTkinter desktop app—profile randomization, expandable `Customize` view, shadcn `Select` browser picker, 3-step stepper, one-click confirmation pause, canonical link preview, live activity console, `F12` diagnostics preview, and a hairline-divided Google AI Plus spec rail.
 - **How It Works & Features**: Lazy-loaded Three.js 3D camera-on-a-rail full-bleed scroll pipeline with 4 monochrome Canvas2D UI cards, an interactive split-spotlight Features showcase (browser detection, local-only privacy, portable Windows download, safe pause & resume), and a topic-filtered exclusive `<details>` FAQ.
 - **Zero-Shift Craft**: Custom `--ease-out` (`cubic-bezier(0.23, 1, 0.32, 1)`) motion tokens, zero-layout-shift interactive states, locked control dimensions, and `prefers-reduced-motion` compliance.
+- **Remote Service Status Switch**: Fail-open Cloudflare R2 `status.json` integration with a delayed bottom-docked floating banner (`notice` / `paused` modes), icon-only status refresh, interaction-aware auto-collapse pill, and paused CTA indicators.
 
 ## Tech Stack
 
@@ -40,8 +41,13 @@ Landing page for **[Google AI Plus Portal](https://github.com/nmrisrl11/gemini-a
     │   ├── scroll-animations.css # CSS scroll-driven section fade-in/out animations
     │   └── theme.css            # Midnight Sapphire palette, Tailwind tokens, and shadows
     ├── constants/
-    │   ├── app-info.ts          # Repository, release, and brand metadata
+    │   ├── app-info.ts          # Repository, release, status endpoint, and brand metadata
     │   └── landing-data.ts      # Structured copy for sections, demo profiles, and FAQs
+    ├── hooks/
+    │   └── use-service-status.ts # Delayed remote status polling & refresh state hook
+    ├── lib/
+    │   ├── service-status.ts    # Fail-open Cloudflare R2 status.json / latest.json helpers
+    │   └── utils.ts             # Tailwind class merging helper
     └── components/
         ├── icons.tsx            # GitHub SVG mark
         ├── download/
@@ -63,7 +69,8 @@ Landing page for **[Google AI Plus Portal](https://github.com/nmrisrl11/gemini-a
         ├── layout/
         │   ├── floating-navbar.tsx
         │   ├── footer.tsx
-        │   └── not-found-page.tsx
+        │   ├── not-found-page.tsx
+        │   └── service-status-banner.tsx
         ├── preview/
         │   ├── plan-benefits-rail.tsx
         │   ├── preview-banners.tsx

@@ -1,6 +1,6 @@
 # Google AI Plus Portal — Complete Technical & User Guide
 
-> Version: 1.0.0
+> Version: 1.0.1
 > Web Portal: https://gemini-ai-plus-portal.vercel.app/
 > Desktop Repository: https://github.com/nmrisrl11/gemini-ai-plus-portal
 > Web Repository: https://github.com/nmrisrl11/gemini-ai-plus-app

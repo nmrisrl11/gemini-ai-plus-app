@@ -7,7 +7,13 @@ import { useEffect, useState, type MouseEvent } from "react";
 
 const MOBILE_LABELS = [{ id: "", label: "Sections" }, ...NAV_ITEMS] as const;
 
-export function FloatingNavbar() {
+interface FloatingNavbarProps {
+	isPaused?: boolean;
+	isRevealed?: boolean;
+}
+
+export function FloatingNavbar({ isPaused = false, isRevealed = false }: FloatingNavbarProps) {
+	const showPausedIndicator = isPaused && isRevealed;
 	const [isVisible, setIsVisible] = useState(false);
 	const [activeId, setActiveId] = useState("");
 	const [mobileOpen, setMobileOpen] = useState(false);
@@ -175,10 +181,17 @@ export function FloatingNavbar() {
 						href={APP_INFO.latestReleaseUrl}
 						target="_blank"
 						rel="noreferrer noopener"
-						title="Download Google AI Plus Portal for Windows"
-						className="tactile-pill inline-flex h-7.5 shrink-0 items-center justify-center rounded-full border border-white/60 bg-linear-to-b from-white via-[#fafafa] to-[#e7ecf2] px-3.5 text-[11px] font-semibold text-slate-950 shadow-[0_2px_8px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,1)] hover:opacity-95 sm:h-8 sm:px-4 sm:text-xs"
+						title={
+							showPausedIndicator
+								? "Promotion temporarily paused — download Google AI Plus Portal for Windows"
+								: "Download Google AI Plus Portal for Windows"
+						}
+						className="tactile-pill inline-flex h-7.5 shrink-0 items-center justify-center gap-1.5 rounded-full border border-white/60 bg-linear-to-b from-white via-[#fafafa] to-[#e7ecf2] px-3.5 text-[11px] font-semibold text-slate-950 shadow-[0_2px_8px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,1)] hover:opacity-95 sm:h-8 sm:px-4 sm:text-xs"
 					>
-						Download
+						{showPausedIndicator ? (
+							<span className="size-1.5 rounded-full bg-rose-500" aria-hidden="true" />
+						) : null}
+						<span>Download</span>
 					</a>
 				</div>
 

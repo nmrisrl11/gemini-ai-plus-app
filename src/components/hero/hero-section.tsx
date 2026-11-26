@@ -1,11 +1,18 @@
 import { HeroScrollCue } from "@/components/hero/hero-scroll-cue";
 import GradientASCII from "@/components/ui/gradient-ascii";
 import { APP_INFO, GRADIENT_ASCII_COLORS } from "@/constants/app-info";
+import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export function HeroSection() {
+interface HeroSectionProps {
+	isPaused?: boolean;
+	isRevealed?: boolean;
+}
+
+export function HeroSection({ isPaused = false, isRevealed = false }: HeroSectionProps) {
 	const [shouldMountBg, setShouldMountBg] = useState(false);
+	const showPausedState = isPaused && isRevealed;
 
 	// Defer WebGL2 shader compilation until after initial paint to minimize Total Blocking Time
 	useEffect(() => {
@@ -79,10 +86,22 @@ export function HeroSection() {
 						href={APP_INFO.latestReleaseUrl}
 						target="_blank"
 						rel="noreferrer noopener"
-						title="Download Google AI Plus Portal for Windows"
-						className="tactile-pill inline-flex cursor-pointer items-center justify-center rounded-full border border-white/60 bg-linear-to-b from-white via-[#fafafa] to-[#e8e8e8] px-10 py-4 text-[16px] font-semibold text-neutral-900 shadow-[0_12px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,1)] hover:from-white hover:to-[#f2f2f2] sm:px-11 sm:py-4.5 sm:text-[17px]"
+						title={
+							showPausedState
+								? "Provisioning is temporarily paused to protect your Gmail account — download Google AI Plus Portal for Windows"
+								: "Download Google AI Plus Portal for Windows"
+						}
+						className={cn(
+							"tactile-pill inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border px-10 py-4 text-[16px] font-semibold text-neutral-900 shadow-[0_12px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,1)] sm:px-11 sm:py-4.5 sm:text-[17px]",
+							showPausedState
+								? "border-rose-200/50 bg-linear-to-b from-[#fffaf8] via-[#f5efec] to-[#e6dcd8] hover:from-[#fffaf8] hover:to-[#eee5e1]"
+								: "border-white/60 bg-linear-to-b from-white via-[#fafafa] to-[#e8e8e8] hover:from-white hover:to-[#f2f2f2]",
+						)}
 					>
-						Download for Windows
+						{showPausedState ? (
+							<span className="size-2 rounded-full bg-rose-500" aria-hidden="true" />
+						) : null}
+						<span>Download for Windows</span>
 					</a>
 
 					<a

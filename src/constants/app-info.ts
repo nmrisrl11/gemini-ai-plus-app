@@ -1,8 +1,8 @@
 export const APP_INFO = {
 	name: "Google AI Plus Portal",
 	shortName: "AI Plus Portal",
-	version: "1.0.0",
-	versionTag: "v1.0.0",
+	version: "1.0.1",
+	versionTag: "v1.0.1",
 	binarySize: "~43 MB",
 	platform: "Windows 10 / 11 (64-bit)",
 	description:
@@ -12,6 +12,8 @@ export const APP_INFO = {
 	latestReleaseUrl: "/download",
 	directDownloadUrl:
 		"https://download-ai-plus-portal.nmrisrl.dev/latest/Gemini-AI-Plus-Portal-latest.exe",
+	serviceStatusUrl: "https://download-ai-plus-portal.nmrisrl.dev/status.json",
+	latestManifestUrl: "https://download-ai-plus-portal.nmrisrl.dev/latest/latest.json",
 	githubIssuesUrl: "https://github.com/nmrisrl11/gemini-ai-plus-portal/issues",
 	githubDiscussionsUrl: "https://github.com/nmrisrl11/gemini-ai-plus-portal/discussions",
 	licenseUrl: "https://github.com/nmrisrl11/gemini-ai-plus-portal/blob/main/LICENSE",
